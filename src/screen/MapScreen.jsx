@@ -5,7 +5,7 @@ const MapScreen = () => {
     <MapContainer
       center={[21.006860317350128, 105.84517256817203]}
       zoom={12}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
