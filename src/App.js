@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="h-full m-0">
+    <div className="h-full w-full">
       <Router />
     </div>
   );

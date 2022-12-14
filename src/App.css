@@ -1,5 +1,5 @@
 .leaflet-container {
-    height: 600px; /* <-- map height */
+    height: 100vh; /* <-- map height */
     width: 100%;
   }
   

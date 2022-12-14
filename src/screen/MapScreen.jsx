@@ -1,11 +1,17 @@
+import { useState } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 
 const MapScreen = () => {
+  const center = [21.006860317350128, 105.84517256817203];
+  const zoom = 12;
+  // const [map, setMap] = useState(null);
+
   return (
     <MapContainer
-      center={[21.006860317350128, 105.84517256817203]}
-      zoom={12}
+      center={center}
+      zoom={zoom}
       scrollWheelZoom={true}
+      // ref={setMap}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
