@@ -1,13 +1,15 @@
 import { connect } from "react-redux";
-import { setSearchVisibility } from "../../store/actions";
+import { setCenter, setSearchVisibility } from "../../store/actions";
 import { IState } from "../../store/models";
 import "./Header.css";
 import { CgPlayListSearch } from "react-icons/cg";
+import { useLocation } from "react-router-dom";
 
-const center = [51.505, -0.09];
-const zoom = 13;
-
-const Header = ({ searchIsVisible, setSearchVisibility }: any) => {
+const Header = ({ searchIsVisible, setSearchVisibility, setCenter }: any) => {
+  const location = useLocation();
+  const handleSetCenter = () => {
+    setCenter();
+  };
   return (
     <div className="header__container">
       <CgPlayListSearch
@@ -21,6 +23,9 @@ const Header = ({ searchIsVisible, setSearchVisibility }: any) => {
         onClick={() => setSearchVisibility(!searchIsVisible)}
       ></CgPlayListSearch>
       <span>Camera</span>
+      {location.pathname === "/" && (
+        <button onClick={handleSetCenter}>123</button>
+      )}
     </div>
   );
 };
@@ -34,6 +39,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     setSearchVisibility: (payload: boolean) =>
       dispatch(setSearchVisibility(payload)),
+    setCenter: () => dispatch(setCenter()),
   };
 };
 

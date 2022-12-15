@@ -6,13 +6,11 @@ import Map from "./components/Map/Map";
 import Search from "./components/Search/Search";
 import Preview from "./components/Preview/Preview";
 import Form from "./components/Form/Form";
-
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CameraScreen from "./screen/CameraScreen";
+function MapScreen() {
   return (
     <>
-      <nav>
-        <Header />
-      </nav>
       <main>
         <Search />
         <Map />
@@ -20,6 +18,20 @@ function App() {
         <Form />
       </main>
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Header />
+      </nav>
+      <Routes>
+        <Route path="/" element={<MapScreen />}></Route>
+        <Route path="/camera" element={<CameraScreen />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

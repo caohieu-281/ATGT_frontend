@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { LatLngExpression } from "leaflet";
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import { connect } from "react-redux";
@@ -14,19 +13,19 @@ import "./Map.css";
 
 function SetCenter() {
   const map = useMap();
-  map.setView([21.0277644, 105.83415979], 13);
+  map.setView([21.0277644, 105.83415979], 13); // Ha Noi
   return null;
 }
 
 const Map = ({
   isVisible,
   places,
+  center,
   selectedPlace,
   togglePreview,
   setPlaceForPreview,
 }: any) => {
-  const [map, setMap] = useState(null);
-  const defaultPosition: LatLngExpression = [21.0277644, 105.83415979]; // Ha Noi position
+  const defaultPosition: LatLngExpression = center; // Ha Noi position
 
   const showPreview = (place: Place) => {
     if (isVisible) {
@@ -76,8 +75,9 @@ const Map = ({
 };
 
 const mapStateToProps = (state: IState) => {
-  const { places } = state;
+  const { places, map } = state;
   return {
+    center: map.center,
     isVisible: places.placePreviewsIsVisible,
     places: places.places,
     selectedPlace: places.selectedPlace,

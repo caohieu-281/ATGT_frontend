@@ -4,6 +4,10 @@ export interface SearchState {
   searchIsVisible: boolean;
 }
 
+export interface MapState {
+  center: any;
+}
+
 export interface PlaceState {
   places: Place[];
   selectedPlace: Place | null;
@@ -15,6 +19,7 @@ export interface PlaceState {
 export interface IState {
   search: SearchState;
   places: PlaceState;
+  map: MapState;
 }
 
 export interface Place {
