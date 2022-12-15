@@ -1,5 +1,4 @@
-.leaflet-container {
-    height: 100vh; /* <-- map height */
-    width: 100%;
-  }
-  
+main {
+  display: flex;
+  position: fixed;
+}
