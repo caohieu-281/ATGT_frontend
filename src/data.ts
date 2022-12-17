@@ -6,7 +6,7 @@ export const data: Place[] = [
     picture:
       "https://lh5.googleusercontent.com/p/AF1QipOlx65WWHVJpuxfHBjDoWZvhJFAErBEsvirL4D2=w408-h306-k-no",
     position: [21.003131, 105.820193],
-    seeMoreLink: "",
+    seeMoreLink: "http://localhost:3000/camera",
   },
 
   {

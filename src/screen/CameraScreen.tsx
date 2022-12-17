@@ -1,14 +1,16 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import ReactDOM from "react-dom";
+import MultipleCanvas from "../components/DrawPolygon/MultipleCanvas";
 
 export default function CameraScreen() {
-  const url = "rtsp://118.70.32.198:80/Streaming/Channels/101";
+  const url = "https://www.youtube.com/watch?v=urZ0bhF9bB4";
   return (
     <div>
-      <h1 className="text-xl">Hello world!</h1>
       <ReactPlayer
-        playing={true}
+        // playing={true}
         url={url}
+        // loop="true"
         width="100vh"
         height="100vh"
         config={{
@@ -20,6 +22,7 @@ export default function CameraScreen() {
           },
         }}
       />
+      <MultipleCanvas />
     </div>
   );
 }
