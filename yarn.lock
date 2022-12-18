@@ -1790,13 +1790,6 @@
   dependencies:
     "@types/react" "^16"
 
-"@types/react-reconciler@^0.28.0":
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/@types/react-reconciler/-/react-reconciler-0.28.0.tgz#513acbed173140e958c909041ca14eb40412077f"
-  integrity sha512-5cjk9ottZAj7eaTsqzPUIlrVbh3hBAO2YaEL1rkjHKB3xNAId7oU8GhzvAX+gfmlfoxTwJnBjPxEHyxkEA1Ffg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-redux@^7.1.12":
   version "7.1.12"
   resolved "https://registry.npmjs.org/@types/react-redux/-/react-redux-7.1.12.tgz"
@@ -6355,13 +6348,6 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
-its-fine@^1.0.6:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/its-fine/-/its-fine-1.0.7.tgz#97f37c4e616ab9eb9dfc57559262be56f82812c4"
-  integrity sha512-xjBg9NTmOj42yFoWA0UoUDxeRiZR1C9ILY/G2elIKYt+YZCQ0I4o8vd7yIs+i9GjVmVOlxfNtoBJLGtrrnGrSA==
-  dependencies:
-    "@types/react-reconciler" "^0.28.0"
-
 jest-changed-files@^26.6.2:
   version "26.6.2"
   resolved "https://registry.npmjs.org/jest-changed-files/-/jest-changed-files-26.6.2.tgz"
@@ -6974,10 +6960,10 @@ kleur@^3.0.3:
   resolved "https://registry.npmjs.org/kleur/-/kleur-3.0.3.tgz"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-konva@^8.3.14:
-  version "8.3.14"
-  resolved "https://registry.yarnpkg.com/konva/-/konva-8.3.14.tgz#691ecb6f4568c58818359af369f03e7438ea3640"
-  integrity sha512-6I/TZppgY3Frs//AvZ87YVQLFxLywitb8wLS3qMM+Ih9e4QcB5Yy8br6eq7DdUzxPdbsYTz1FQBHzNxs08M1Tw==
+konva@8.2.3:
+  version "8.2.3"
+  resolved "https://registry.yarnpkg.com/konva/-/konva-8.2.3.tgz#14723b0d67d688bd8da532a804d9cd44913297b4"
+  integrity sha512-2hDlDzB9goNgV0Fm6oQqbq3ZISL34bOYvIpe4iXXQmOiPFFy1o3wwo0z0CX2x2Gv+fS6SHDR/JsRNRtEquApXA==
 
 language-subtag-registry@~0.3.2:
   version "0.3.21"
@@ -9330,14 +9316,13 @@ react-is@^17.0.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.1.tgz"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-react-konva@^18.2.3:
-  version "18.2.3"
-  resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-18.2.3.tgz#75c658fca493bdf515b38f2a8d544fa7a9c754c4"
-  integrity sha512-OPxjBTgaEGU9pt/VJSVM7QNXYHEZ5CkulX+4fTTvbaH+Wh+vMLbXmH3yjWw4kT/5Qi6t0UQKHPPmirCv8/9sdg==
+react-konva@17.0.2-5:
+  version "17.0.2-5"
+  resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-17.0.2-5.tgz#e70b0acf323402de0a540f27b300fbe7ed151849"
+  integrity sha512-IyzdfqRDK8r1ulp/jbLPX18AuO+n5yNtL0+4T0QEUsgArRqIl/VRCG1imA5mYJBk0cBNC5+fWDHN+HWEW62ZEQ==
   dependencies:
-    its-fine "^1.0.6"
-    react-reconciler "~0.29.0"
-    scheduler "^0.23.0"
+    react-reconciler "~0.26.2"
+    scheduler "^0.20.2"
 
 react-leaflet@^3.0.5:
   version "3.0.5"
@@ -9357,13 +9342,14 @@ react-player@^2.11.0:
     prop-types "^15.7.2"
     react-fast-compare "^3.0.1"
 
-react-reconciler@~0.29.0:
-  version "0.29.0"
-  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.29.0.tgz#ee769bd362915076753f3845822f2d1046603de7"
-  integrity sha512-wa0fGj7Zht1EYMRhKWwoo1H9GApxYLBuhoAuXN0TlltESAjDssB+Apf0T/DngVqaMyPypDmabL37vw/2aRM98Q==
+react-reconciler@~0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.26.2.tgz#bbad0e2d1309423f76cf3c3309ac6c96e05e9d91"
+  integrity sha512-nK6kgY28HwrMNwDnMui3dvm3rCFjZrcGiuwLc5COUipBK5hWHLOxMJhSnSomirqWwjPBJKV1QcbkI0VJr7Gl1Q==
   dependencies:
     loose-envify "^1.1.0"
-    scheduler "^0.23.0"
+    object-assign "^4.1.1"
+    scheduler "^0.20.2"
 
 react-redux@^7.2.2:
   version "7.2.2"
@@ -10000,12 +9986,13 @@ scheduler@^0.20.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.23.0.tgz#ba8041afc3d30eb206a487b6b384002e4e61fdfe"
-  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
+scheduler@^0.20.2:
+  version "0.20.2"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.2.tgz#4baee39436e34aa93b4874bddcbf0fe8b8b50e91"
+  integrity sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
   dependencies:
     loose-envify "^1.1.0"
+    object-assign "^4.1.1"
 
 schema-utils@^1.0.0:
   version "1.0.0"
@@ -11431,10 +11418,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-web-vitals@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.npmjs.org/web-vitals/-/web-vitals-0.2.4.tgz"
-  integrity sha512-6BjspCO9VriYy12z356nL6JBS0GYeEcA457YyRzD+dD6XYCQ75NKhcOHUMHentOE7OcVCIXXDvOm0jKFfQG2Gg==
+web-vitals@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.2.tgz#06535308168986096239aa84716e68b4c6ae6d1c"
+  integrity sha512-PFMKIY+bRSXlMxVAQ+m2aw9c/ioUYfDgrYot0YUa+/xa0sakubWhSDyxAKwzymvXVdF4CZI71g06W+mqhzu6ig==
 
 webidl-conversions@^5.0.0:
   version "5.0.0"
