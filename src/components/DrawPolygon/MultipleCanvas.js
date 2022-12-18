@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import { Stage, Layer, Image, Group, Line, Circle } from "react-konva";
 import Button from "../ButtonConva/Button";
 
-const videoSource = "./space_landscape.jpg";
+const videoSource = "img/space_landscape.jpg";
 const wrapperStyle = {
   display: "flex",
   justifyContent: "center",
@@ -21,7 +21,6 @@ const MultipleCanvas = () => {
   const vertexRadius = 6;
   const [image, setImage] = useState();
   const imageRef = useRef(null);
-  const dataRef = useRef(null);
   const [size, setSize] = useState({});
   const [position, setPosition] = useState([0, 0]);
   const [data, setData] = useState([
@@ -187,18 +186,9 @@ const MultipleCanvas = () => {
         >
           <Button name="Undo" onClick={undo} />
           <Button name="Reset" onClick={reset} />
-          <Button name="Add Polygon" onClick={add} />
+          {/* <Button name="Add Polygon" onClick={add} /> */}
         </div>
       </div>
-      <div
-        ref={dataRef}
-        style={{
-          width: 375,
-          height: 302,
-          boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
-          marginTop: 20,
-        }}
-      ></div>
     </div>
   );
 };
