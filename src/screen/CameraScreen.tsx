@@ -7,27 +7,29 @@ export default function CameraScreen() {
   const url = "https://www.youtube.com/watch?v=urZ0bhF9bB4";
   const [isVisible, setIsVisible] = useState(false);
   const create = () => {
-    setIsVisible(!isVisible)
-  }
+    setIsVisible(!isVisible);
+  };
 
   const viPham = [
     {
-      time: '16:00',
-      image: 'img/vi_pham.png'
+      time: "16:00",
+      image: "img/vi_pham.png",
     },
     {
-      time: '16:00',
-      image: 'img/vi_pham.png'
+      time: "16:00",
+      image: "img/vi_pham.png",
     },
     {
-      time: '16:00',
-      image: 'img/vi_pham.png'
+      time: "16:00",
+      image: "img/vi_pham.png",
     },
-  ]
+  ];
 
   return (
     <div className="w-100 container-fluid mt-3 mb-5">
-      <button type="button" className="btn btn-primary">Back</button>
+      <button type="button" className="btn btn-primary">
+        Back
+      </button>
       <div className="row text-center  mb-3">
         <h1 className="">Khu vực: Ngã Tư Sở</h1>
       </div>
@@ -55,26 +57,30 @@ export default function CameraScreen() {
             <div className="col"></div>
           </div>
         </div>
-        <div className="col-5"
+        <div
+          className="col-5"
           style={{
             boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
           }}
         >
-          <h3 className="text-center pt-3 pb-2">Những phương tiện vi phạm giao thông</h3>
+          <h3 className="text-center pt-3 pb-2">
+            Những phương tiện vi phạm giao thông
+          </h3>
           {/* list */}
-          <div className="overflow-auto" style={{ height: '600px' }}>
-            {
-              viPham.map((item) => {
-                return (
-                  <div className="block p-3 m-2 shadow-sm" style={{ backgroundColor: "aliceblue" }}>
-                    <div className="image">
-                      <img src={item.image} alt="" className="w-100" />
-                    </div>
-                    <div className="time">{item.time}</div>
+          <div className="overflow-auto" style={{ height: "600px" }}>
+            {viPham.map((item) => {
+              return (
+                <div
+                  className="block p-3 m-2 shadow-sm"
+                  style={{ backgroundColor: "aliceblue" }}
+                >
+                  <div className="image">
+                    <img src={item.image} alt="" className="w-100" />
                   </div>
-                )
-              })
-            }
+                  <div className="time">{item.time}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -88,6 +94,6 @@ export default function CameraScreen() {
           </div>
         </>
       )}
-    </div >
+    </div>
   );
 }
