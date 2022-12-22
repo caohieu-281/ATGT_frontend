@@ -2,11 +2,11 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import { Stage, Layer, Image, Group, Line, Circle } from "react-konva";
 import Button from "../ButtonConva/Button";
 
-const videoSource = "img/space_landscape.jpg";
+const videoSource = "img/vi_pham.jpg";
 const wrapperStyle = {
   display: "flex",
   justifyContent: "center",
-  marginTop: 20,
+  // marginTop: 20,
   backgroundColor: "aliceblue",
 };
 const columnStyle = {
@@ -14,7 +14,7 @@ const columnStyle = {
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: 20,
+  // marginTop: 20,
   backgroundColor: "aliceblue",
 };
 const MultipleCanvas = () => {
@@ -37,8 +37,8 @@ const MultipleCanvas = () => {
 
   const videoElement = useMemo(() => {
     const element = new window.Image();
-    element.width = 300;
-    element.height = 302;
+    element.width = 1024;
+    element.height = 728;
     element.src = videoSource;
     return element;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,8 +116,8 @@ const MultipleCanvas = () => {
     <div style={wrapperStyle}>
       <div style={columnStyle}>
         <Stage
-          width={size.width || 650}
-          height={size.height || 302}
+          width={size.width || 1448 }
+          height={size.height || 720 }
           onMouseMove={handleMouseMove}
           onMouseDown={handleMouseDown}
         >
