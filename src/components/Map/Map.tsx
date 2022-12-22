@@ -18,6 +18,7 @@ function SetCenter() {
 }
 
 const Map = ({
+  location,
   isVisible,
   places,
   center,
@@ -46,12 +47,12 @@ const Map = ({
   };
 
   return (
-    <div className="map__container">
+    <div style={{ width: "100%", height: "80vh" }}>
       <MapContainer
         center={defaultPosition}
         zoom={12}
         scrollWheelZoom={true}
-        style={{ height: "100vh" }}
+        style={{ height: "100%" }}
         zoomControl={true}
       >
         <SetCenter />
@@ -59,15 +60,30 @@ const Map = ({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {places.map((place: Place) => (
-          <Marker
-            key={place.title}
-            position={place.position}
-            eventHandlers={{ click: () => showPreview(place) }}
-          >
-            <Tooltip>{place.title}</Tooltip>
-          </Marker>
-        ))}
+        {places.map((place: Place) => {
+          if (location && places?.district) {
+            console.log(
+              "🚀 ~ file: Map.tsx:70 ~ {places.map ~ places.district",
+              String(places?.district)
+            );
+            console.log("🚀 ~ file: Map.tsx:74 ~ location", location);
+            console.log(
+              "🚀 ~ file: Map.tsx:770 ~ location.includes(places?.district",
+              location.includes(String(places?.district))
+            );
+            if (location.indexOf(String(places?.district)) >= 0) {
+              return (
+                <Marker
+                  key={place.title}
+                  position={place.position}
+                  eventHandlers={{ click: () => showPreview(place) }}
+                >
+                  <Tooltip>{place.title}</Tooltip>
+                </Marker>
+              );
+            }
+          }
+        })}
         <AddMarker />
       </MapContainer>
     </div>
