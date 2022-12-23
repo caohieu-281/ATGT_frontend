@@ -11,6 +11,7 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import Map from "../components/Map/Map";
 import { Select } from "antd";
 import type { SelectProps } from "antd";
+import Preview from "../components/Preview/Preview";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
@@ -106,7 +107,7 @@ const App: React.FC = () => {
                 allowClear
                 style={{ width: "50%", marginBottom: "16px" }}
                 placeholder="Please select"
-                defaultValue={["Hai Ba Trung"]}
+                defaultValue={["Hoan Kiem"]}
                 onChange={handleChange}
                 options={options}
               />
@@ -118,7 +119,7 @@ const App: React.FC = () => {
                 allowClear
                 style={{ width: "50%", marginBottom: "16px" }}
                 placeholder="Please select"
-                defaultValue={["Hai Ba Trung"]}
+                defaultValue={["Hoan Kiem"]}
                 onChange={handleChange}
                 options={options}
               />
@@ -126,6 +127,7 @@ const App: React.FC = () => {
           </div>
           <Map location={location}></Map>
         </Content>
+        <Preview />
         <Footer style={{ textAlign: "center" }}>ATGT - 2022 Camera</Footer>
       </Layout>
     </Layout>

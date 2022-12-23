@@ -60,18 +60,14 @@ const Map = ({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {places.map((place: Place) => {
-          if (location && places?.district) {
-            console.log(
-              "🚀 ~ file: Map.tsx:70 ~ {places.map ~ places.district",
-              String(places?.district)
-            );
-            console.log("🚀 ~ file: Map.tsx:74 ~ location", location);
-            console.log(
-              "🚀 ~ file: Map.tsx:770 ~ location.includes(places?.district",
-              location.includes(String(places?.district))
-            );
-            if (location.indexOf(String(places?.district)) >= 0) {
+        {places?.map((place: Place) => {
+          if (location && place.district) {
+            if (
+              location?.find((value, index) => {
+                if (value === place.district) return true;
+                return false;
+              })
+            )
               return (
                 <Marker
                   key={place.title}
@@ -81,7 +77,6 @@ const Map = ({
                   <Tooltip>{place.title}</Tooltip>
                 </Marker>
               );
-            }
           }
         })}
         <AddMarker />
