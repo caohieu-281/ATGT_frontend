@@ -13,12 +13,6 @@ import { Select } from "antd";
 import type { SelectProps } from "antd";
 import Preview from "../components/Preview/Preview";
 
-const options: SelectProps["options"] = [
-  { label: "Hoan Kiem", value: "Hoan Kiem" },
-  { label: "Bach Mai", value: "Bach Mai" },
-  { label: "Hai Ba Trung", value: "Hai Ba Trung" },
-];
-
 const { Content, Footer, Sider } = Layout;
 
 type MenuItem = Required<MenuProps>["items"][number];
@@ -52,7 +46,7 @@ const items: MenuItem[] = [
   getItem("Files", "9", <FileOutlined />),
 ];
 
-const HomePage: React.FC = () => {
+const Dashboard: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [location, setLocation] = useState(["Hoan Kiem"]);
   const {
@@ -95,49 +89,15 @@ const HomePage: React.FC = () => {
             }}
           >
             <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>Map</Breadcrumb.Item>
+            <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ display: "flex", flexDirection: "col", width: "100%" }}>
-            <div style={{ width: "50%" }}>
-              {/* <div> */}
-              <label style={{ marginRight: "10px" }}> Địa Điểm </label>
-              <Select
-                mode="multiple"
-                allowClear
-                style={{ width: "50%", marginBottom: "16px" }}
-                placeholder="Please select"
-                defaultValue={["Hoan Kiem"]}
-                onChange={handleChange}
-                options={options}
-              />
-            </div>
-            <div style={{ width: "50%" }}>
-              {/* <div> */}
-              <label style={{ marginRight: "10px" }}> Phường </label>
-              <Select
-                mode="multiple"
-                allowClear
-                style={{ width: "50%", marginBottom: "16px" }}
-                placeholder="Please select"
-                defaultValue={["Hoan Kiem"]}
-                onChange={handleChange}
-                options={options}
-              />
-            </div>
+            1231312312321
           </div>
-          <Map location={location}></Map>
         </Content>
-        <Sider
-          collapsible
-          // collapsed={collapsed}
-          onCollapse={(value) => setCollapsed(value)}
-        >
-          right sidebar
-        </Sider>
-        {/* <Footer style={{ textAlign: "center" }}>ATGT - 2022 Camera</Footer> */}
       </Layout>
     </Layout>
   );
 };
 
-export default HomePage;
+export default Dashboard;

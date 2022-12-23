@@ -9,6 +9,7 @@ import Form from "./components/Form/Form";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CameraScreen from "./screen/CameraScreen";
 import HomePage from "./screen/HomePage";
+import Dashboard from "./screen/Dashboard";
 import "antd/dist/reset.css";
 
 function MapScreen() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<MapScreen />}></Route>
         <Route path="/camera" element={<CameraScreen />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
+        <Route path="/dashboard" element={<Dashboard />}></Route>
       </Routes>
     </BrowserRouter>
   );
