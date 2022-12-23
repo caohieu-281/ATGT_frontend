@@ -2,11 +2,11 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import { Stage, Layer, Image, Group, Line, Circle } from "react-konva";
 import Button from "../ButtonConva/Button";
 
-const videoSource = "img/space_landscape.jpg";
+const videoSource = "img/vi_pham.jpg";
 const wrapperStyle = {
   display: "flex",
   justifyContent: "center",
-  marginTop: 20,
+  // marginTop: 20,
   backgroundColor: "aliceblue",
 };
 const columnStyle = {
@@ -14,7 +14,7 @@ const columnStyle = {
   justifyContent: "center",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: 20,
+  // marginTop: 20,
   backgroundColor: "aliceblue",
 };
 const MultipleCanvas = () => {
@@ -37,8 +37,8 @@ const MultipleCanvas = () => {
 
   const videoElement = useMemo(() => {
     const element = new window.Image();
-    element.width = 300;
-    element.height = 302;
+    element.width = 960;
+    element.height = 540;
     element.src = videoSource;
     return element;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,21 +64,28 @@ const MultipleCanvas = () => {
 
   const undo = () => {
     var tempData = data;
-    tempData[tempData.length - 1].points = tempData[
-      tempData.length - 1
-    ].points.slice(0, -2);
-    setData(tempData);
-    setPosition(
-      tempData[tempData.length - 1].points[
-        tempData[tempData.length - 1].points - 1
-      ]
-    );
+    if (
+      tempData.length > 0 &&
+      tempData[tempData.length - 1].points.length > 2
+    ) {
+      tempData[tempData.length - 1].points = tempData[
+        tempData.length - 1
+      ].points.slice(0, -2);
+      setData(tempData);
+      setPosition(
+        tempData[tempData.length - 1].points[
+          tempData[tempData.length - 1].points - 1
+        ]
+      );
+    }
   };
 
   const reset = () => {
     var tempData = data;
-    tempData = tempData.slice(0, -1);
-    setData(tempData);
+    if (tempData.length >= 0) {
+      tempData = tempData.slice(0, -1);
+      setData(tempData.concat({ points: [] }));
+    }
   };
 
   const add = () => {
@@ -104,8 +111,9 @@ const MultipleCanvas = () => {
         setData(tempData);
         add();
       } else {
-        tempData[tempData.length - 1].points =
-          tempData[tempData.length - 1].points.concat(position);
+        tempData[tempData.length - 1].points = tempData[
+          tempData.length - 1
+        ].points.concat(position);
         setData(tempData);
       }
     } else {
@@ -116,8 +124,8 @@ const MultipleCanvas = () => {
     <div style={wrapperStyle}>
       <div style={columnStyle}>
         <Stage
-          width={size.width || 650}
-          height={size.height || 302}
+          width={size.width || 960}
+          height={size.height || 540}
           onMouseMove={handleMouseMove}
           onMouseDown={handleMouseDown}
         >
@@ -186,7 +194,6 @@ const MultipleCanvas = () => {
         >
           <Button name="Undo" onClick={undo} />
           <Button name="Reset" onClick={reset} />
-          {/* <Button name="Add Polygon" onClick={add} /> */}
         </div>
       </div>
     </div>
