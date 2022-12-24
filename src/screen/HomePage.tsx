@@ -6,12 +6,12 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Col, MenuProps, Row, Breadcrumb, Layout, Menu, theme } from "antd";
 import Map from "../components/Map/Map";
 import { Select } from "antd";
 import type { SelectProps } from "antd";
 import Preview from "../components/Preview/Preview";
+import TableHome from "../components/HomePage/TableHome";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
@@ -125,16 +125,21 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
-          <Map location={location}></Map>
+          <div>
+            <Row>
+              <Col flex={20}>
+                <Map location={location}></Map>
+              </Col>
+              <Col flex={3}>
+                <div>
+                  <TableHome></TableHome>
+                </div>
+              </Col>
+            </Row>
+          </div>
         </Content>
-        <Sider
-          collapsible
-          // collapsed={collapsed}
-          onCollapse={(value) => setCollapsed(value)}
-        >
-          right sidebar
-        </Sider>
-        {/* <Footer style={{ textAlign: "center" }}>ATGT - 2022 Camera</Footer> */}
+
+        <Footer style={{ textAlign: "center" }}>ATGT - 2022 Camera</Footer>
       </Layout>
     </Layout>
   );
