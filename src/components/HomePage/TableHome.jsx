@@ -11,16 +11,22 @@ interface DataType {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Name",
-    dataIndex: "name",
-  },
-  {
-    title: "Age",
-    dataIndex: "age",
-  },
-  {
-    title: "Address",
+    title: "Địa điểm",
     dataIndex: "address",
+  },
+  {
+    title: "Thời gian",
+    dataIndex: "time",
+  },
+  {
+    title: "Camera",
+    dataIndex: "camera",
+  },
+  {
+    title: "Action",
+    dataIndex: "",
+    key: "x",
+    render: () => <a className="text-blue-700">Go to camera</a>,
   },
 ];
 
@@ -28,9 +34,9 @@ const data: DataType[] = [];
 for (let i = 0; i < 46; i++) {
   data.push({
     key: i,
-    name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
+    time: `11:00 24/12/2022`,
+    camera: 2,
+    address: `Hai Ba Trung, Ha Noi`,
   });
 }
 
@@ -56,12 +62,7 @@ const TableHome: React.FC = () => {
   const hasSelected = selectedRowKeys.length > 0;
 
   return (
-    <div>
-      <div style={{ marginBottom: 16 }}>
-        <span style={{ marginLeft: 8 }}>
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
-        </span>
-      </div>
+    <div className="px-5">
       <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
     </div>
   );

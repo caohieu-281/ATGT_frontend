@@ -12,11 +12,40 @@ import { Select } from "antd";
 import type { SelectProps } from "antd";
 import Preview from "../components/Preview/Preview";
 import TableHome from "../components/HomePage/TableHome";
+import CardHome from "../components/HomePage/CardHome";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
   { label: "Bach Mai", value: "Bach Mai" },
   { label: "Hai Ba Trung", value: "Hai Ba Trung" },
+];
+
+const listCamera = [
+  {
+    nameCamera: "Camera 1",
+    imageUrl:
+      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
+  },
+  {
+    nameCamera: "Camera 2",
+    imageUrl:
+      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
+  },
+  {
+    nameCamera: "Camera 3",
+    imageUrl:
+      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
+  },
+  {
+    nameCamera: "Camera 4",
+    imageUrl:
+      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
+  },
+  {
+    nameCamera: "Camera 5",
+    imageUrl:
+      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
+  },
 ];
 
 const { Content, Footer, Sider } = Layout;
@@ -112,7 +141,6 @@ const HomePage: React.FC = () => {
               />
             </div>
             <div style={{ width: "50%" }}>
-              {/* <div> */}
               <label style={{ marginRight: "10px" }}> Phường </label>
               <Select
                 mode="multiple"
@@ -125,17 +153,31 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
-          <div>
-            <Row>
-              <Col flex={20}>
+          <div style={{ height: "70vh" }}>
+            <Row justify="space-between" style={{ height: "100%" }}>
+              <Col span={15}>
                 <Map location={location}></Map>
               </Col>
-              <Col flex={3}>
-                <div>
-                  <TableHome></TableHome>
-                </div>
+              <Col
+                span={8}
+                // flex={1}
+                className="overflow-auto"
+                style={{ height: "100%" }}
+              >
+                {listCamera.map((camera) => (
+                  <div className="mx-5 mb-5">
+                    <CardHome
+                      key={camera.nameCamera}
+                      nameCamera={camera.nameCamera}
+                    />
+                  </div>
+                ))}
+                {/* <CardHome /> */}
               </Col>
             </Row>
+          </div>
+          <div className="mt-3">
+            <TableHome></TableHome>
           </div>
         </Content>
 
