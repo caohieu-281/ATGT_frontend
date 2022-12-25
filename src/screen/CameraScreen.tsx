@@ -29,7 +29,6 @@ export default function CameraScreen() {
   };
 
   const handleOk = () => {
-    console.log("sdkfskhfasf");
     setIsModalOpen(true);
   };
 
@@ -42,7 +41,7 @@ export default function CameraScreen() {
     setIsPlay(true);
     setTimeout(function () {
       setTimeAppear1(true);
-    }, 2000);
+    }, 20000);
     // SendImgViaTelegram(
     //   "https://drive.google.com/file/d/1DzkmA3_kSWSRzPBhDEKWQkf_k1vpoD11/view?usp=sharing"
     // );
@@ -60,7 +59,7 @@ export default function CameraScreen() {
   const createViPham3 = () => {
     setTimeout(() => {
       setTimeAppear3(true);
-    }, 7000);
+    }, 5000);
     // SendImgViaTelegram(
     //   "https://drive.google.com/file/d/1q0Me1WhqO2aWaOUfI111fM50Hl3gKvco/view?usp=sharing"
     // );
@@ -68,15 +67,15 @@ export default function CameraScreen() {
 
   const viPham1 = {
     time: "16:23:23",
-    image: "img/demo_result.jpg",
+    image: "img/106.jpg",
   };
   const viPham2 = {
     time: "16:50:01",
-    image: "img/demo_result.jpg",
+    image: "img/120.jpg",
   };
   const viPham3 = {
     time: "17:00:00",
-    image: "img/demo_result.jpg",
+    image: "img/144.jpg",
   };
 
   const confirm = () => {
@@ -141,7 +140,7 @@ export default function CameraScreen() {
       <div className="row justify-content-center px-2">
         <div className="col-7 row">
           <ReactPlayer
-            url="vid1.mp4"
+            url="vid1_check-out_convert.mp4"
             playing={isPlay}
             loop={true}
             width="100%"
