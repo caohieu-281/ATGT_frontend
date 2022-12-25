@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.8",
     "antd": "^5.1.0",
     "autoprefixer": "^10.4.13",
+    "axios": "^1.2.1",
     "chart.js": "^4.1.1",
     "formik": "^2.2.6",
     "konva": "8.2.3",

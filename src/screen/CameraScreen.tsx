@@ -4,7 +4,7 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 import MultipleCanvas from "../components/DrawPolygon/MultipleCanvas";
 import { Breadcrumb, Modal, notification, theme } from "antd";
 // import SendImgViaTelegram from "../bot/SendImgViaTelegram";
-
+import { getNewCamera } from "../services/CameraServices";
 export default function CameraScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
@@ -39,6 +39,15 @@ export default function CameraScreen() {
   const handleClick = () => {
     setIsModalOpen(false);
     setIsPlay(true);
+    getNewCamera()
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("call API ok");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setTimeout(function () {
       setTimeAppear1(true);
     }, 20000);
