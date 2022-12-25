@@ -6,6 +6,7 @@ import Search from "./components/Search/Search";
 import Preview from "./components/Preview/Preview";
 import Form from "./components/Form/Form";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CameraScreenExist from "./screen/CameraScreenExist";
 import CameraScreen from "./screen/CameraScreen";
 import HomePage from "./screen/HomePage";
 import Dashboard from "./screen/Dashboard";
@@ -35,6 +36,7 @@ function App() {
             <Route path="/camera" element={<CameraScreen />}></Route>
             <Route path="/home" element={<HomePage />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/camera-exist" element={<CameraScreenExist />}></Route>
           </Routes>
           <Footer style={{ textAlign: "center" }}>ATGT - 2022 Camera</Footer>
         </Layout>

@@ -107,30 +107,51 @@ const HomePage: React.FC = () => {
               {location && (
                 <Col
                   span={8}
-                  // flex={1}
                   className="overflow-auto"
                   style={{ height: "100%" }}
                 >
                   {location.map((diaDiem) => {
-                    return (
-                      <div key={diaDiem}>
-                        <p className="text-center font-bold text-lg">
-                          {diaDiem}
-                        </p>
-                        {listCamera.map((camera) => (
-                          <div key={camera.nameCamera}>
-                            <div
-                              onClick={() => {
-                                navigate("/camera");
-                              }}
-                              className="mx-5 mb-3"
-                            >
-                              <CardHome nameCamera={camera.nameCamera} />
+                    if (diaDiem === "Hoan Kiem") {
+                      return (
+                        <div key={diaDiem}>
+                          <p className="text-center font-bold text-lg">
+                            {diaDiem}
+                          </p>
+                          {listCamera.map((camera) => (
+                            <div key={camera.nameCamera}>
+                              <div
+                                onClick={() => {
+                                  navigate("/camera");
+                                }}
+                                className="mx-5 mb-3"
+                              >
+                                <CardHome nameCamera={camera.nameCamera} />
+                              </div>
                             </div>
-                          </div>
-                        ))}
-                      </div>
-                    );
+                          ))}
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={diaDiem}>
+                          <p className="text-center font-bold text-lg">
+                            {diaDiem}
+                          </p>
+                          {listCamera.map((camera) => (
+                            <div key={camera.nameCamera}>
+                              <div
+                                onClick={() => {
+                                  navigate("/camera-exist");
+                                }}
+                                className="mx-5 mb-3"
+                              >
+                                <CardHome nameCamera={camera.nameCamera} />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    }
                   })}
                 </Col>
               )}

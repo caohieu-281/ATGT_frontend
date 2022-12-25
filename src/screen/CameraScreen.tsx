@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import MultipleCanvas from "../components/DrawPolygon/MultipleCanvas";
-// import Button from "../components/ButtonConva/Button";
 import { Breadcrumb, Modal, notification, theme } from "antd";
 // import SendImgViaTelegram from "../bot/SendImgViaTelegram";
 
@@ -30,7 +29,6 @@ export default function CameraScreen() {
   };
 
   const handleOk = () => {
-    console.log("sdkfskhfasf");
     setIsModalOpen(true);
   };
 
@@ -43,7 +41,7 @@ export default function CameraScreen() {
     setIsPlay(true);
     setTimeout(function () {
       setTimeAppear1(true);
-    }, 2000);
+    }, 20000);
     // SendImgViaTelegram(
     //   "https://drive.google.com/file/d/1DzkmA3_kSWSRzPBhDEKWQkf_k1vpoD11/view?usp=sharing"
     // );
@@ -61,7 +59,7 @@ export default function CameraScreen() {
   const createViPham3 = () => {
     setTimeout(() => {
       setTimeAppear3(true);
-    }, 7000);
+    }, 5000);
     // SendImgViaTelegram(
     //   "https://drive.google.com/file/d/1q0Me1WhqO2aWaOUfI111fM50Hl3gKvco/view?usp=sharing"
     // );
@@ -69,15 +67,15 @@ export default function CameraScreen() {
 
   const viPham1 = {
     time: "16:23:23",
-    image: "img/demo_result.jpg",
+    image: "img/106.jpg",
   };
   const viPham2 = {
     time: "16:50:01",
-    image: "img/demo_result.jpg",
+    image: "img/120.jpg",
   };
   const viPham3 = {
     time: "17:00:00",
-    image: "img/demo_result.jpg",
+    image: "img/144.jpg",
   };
 
   const confirm = () => {
@@ -124,7 +122,6 @@ export default function CameraScreen() {
         <Breadcrumb.Item>Map</Breadcrumb.Item>
         <Breadcrumb.Item>Camera</Breadcrumb.Item>
       </Breadcrumb>
-      {/* {contextHolder} */}
       <Modal
         title="Thêm vùng vi phạm"
         open={isModalOpen}
@@ -138,28 +135,17 @@ export default function CameraScreen() {
       </Modal>
 
       <div className="row text-center text-lg mb-3">
-        <h1 className="">Khu vực: Nguyễn Chí Thanh</h1>
+        <h1 className="">Khu vực: Hoàn Kiếm</h1>
       </div>
       <div className="row justify-content-center px-2">
         <div className="col-7 row">
           <ReactPlayer
-            url="vid1.mp4"
+            url="vid1_check-out_convert.mp4"
             playing={isPlay}
             loop={true}
             width="100%"
             height="80vh"
-            // controls={true}
-            // config={{
-            //   youtube: {
-            //     playerVars: { showinfo: 1 },
-            //   },
-            //   facebook: {
-            //     appId: "12345",
-            //   },
-            // }}
           />
-
-          {/* <img src="img/demo2.jpg"></img> */}
         </div>
         <div
           className="col-5"

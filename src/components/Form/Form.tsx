@@ -45,6 +45,8 @@ const Form = ({
       ...values,
       position: [position.lat, position.lng],
     });
+    // values
+    console.log("🚀 ~ file: Form.tsx:51 ~ handleOnSubmit ~ values", values);
     closeForm();
   };
 

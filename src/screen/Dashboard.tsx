@@ -18,27 +18,27 @@ import GaugeChart from "react-gauge-chart";
 const { Title } = Typography;
 
 // data for total and gauge charts
-const total1 = 16902;
-const percent1 = 0.15;
+const total1 = 150;
+const percent1 = 0.35;
 
-const total2 = 41923;
-const percent2 = 0.86;
+const total2 = 500;
+const percent2 = 0.65;
 
 // data for "Xu phat" bar chart
 const data_xuPhat = [
-  { month: "JAN", daXuPhat: 20, chuaXuPhat: 10 },
-  { month: "FEB", daXuPhat: 100, chuaXuPhat: 50 },
-  { month: "MAR", daXuPhat: 150, chuaXuPhat: 30 },
-  { month: "APR", daXuPhat: 90, chuaXuPhat: 20 },
+  { month: "Tháng 9", daXuPhat: 20, chuaXuPhat: 10 },
+  { month: "Tháng 10", daXuPhat: 100, chuaXuPhat: 50 },
+  { month: "Tháng 11", daXuPhat: 150, chuaXuPhat: 30 },
+  { month: "Tháng 12", daXuPhat: 90, chuaXuPhat: 20 },
 ];
 
 // data for "Vi pham" line chart
 const data_viPham = [
-  { month: "JAN", soOtoViPham: 20, soXeMayVaPhuongTienKhac: 10 },
-  { month: "FEB", soOtoViPham: 10, soXeMayVaPhuongTienKhac: 50 },
-  { month: "MAR", soOtoViPham: 15, soXeMayVaPhuongTienKhac: 30 },
-  { month: "APR", soOtoViPham: 50, soXeMayVaPhuongTienKhac: 20 },
-  { month: "MAY", soOtoViPham: 45, soXeMayVaPhuongTienKhac: 50 },
+  { month: "Tháng 8", soOtoViPham: 20, soXeMayVaPhuongTienKhac: 10 },
+  { month: "Tháng 9", soOtoViPham: 10, soXeMayVaPhuongTienKhac: 50 },
+  { month: "Tháng 10", soOtoViPham: 15, soXeMayVaPhuongTienKhac: 30 },
+  { month: "Tháng 11", soOtoViPham: 50, soXeMayVaPhuongTienKhac: 20 },
+  { month: "Tháng 12", soOtoViPham: 45, soXeMayVaPhuongTienKhac: 50 },
 ];
 
 // data for "Quan nhieu vi pham" bar chart
@@ -102,7 +102,7 @@ const Dashboard: React.FC = () => {
                   <Col span={12} align="middle">
                     <Card>
                       <Title level={4} style={{ padding: "0", margin: "0" }}>
-                        Total
+                        Tổng số vi phạm
                       </Title>
                       <Title
                         level={2}
@@ -126,7 +126,7 @@ const Dashboard: React.FC = () => {
                   <Col span={12} align="middle">
                     <Card>
                       <Title level={4} style={{ padding: "0", margin: "0" }}>
-                        Total
+                      Tổng số vi phạm
                       </Title>
                       <Title
                         level={2}
@@ -151,7 +151,7 @@ const Dashboard: React.FC = () => {
               </Col>
               <Col span={12} align="middle">
                 <Card>
-                  <Title level={4}>Số phương tiện đã và chưa xử phạt</Title>
+                  <Title level={4}>Số vi phạm đã và chưa xử phạt theo tháng</Title>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={data_xuPhat}>
                       <CartesianGrid strokeDasharray="3 3" />
@@ -177,7 +177,7 @@ const Dashboard: React.FC = () => {
             <Row>
               <Col span={12} align="middle">
                 <Card>
-                  <Title level={4}>Số phương tiện vi phạm</Title>
+                  <Title level={4}>Số vi phạm theo loại phương tiện</Title>
                   <ResponsiveContainer width="100%" height={350}>
                     <LineChart data={data_viPham}>
                       <Line
@@ -203,7 +203,7 @@ const Dashboard: React.FC = () => {
               </Col>
               <Col span={12} align="middle">
                 <Card>
-                  <Title level={4}>Quận xảy ra nhiều vi phạm</Title>
+                  <Title level={4}>Số vi phạm theo quận</Title>
                   <ResponsiveContainer width="100%" height={350}>
                     <BarChart data={data_quanViPham} margin={{ bottom: 20 }}>
                       <CartesianGrid strokeDasharray="3 3" />
