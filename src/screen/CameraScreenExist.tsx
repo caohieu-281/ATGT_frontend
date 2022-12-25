@@ -21,39 +21,34 @@ export default function CameraScreenExist() {
     });
   };
 
-  // const showModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  // const handleOk = () => {
-  //   console.log("sdkfskhfasf");
-  //   setIsModalOpen(true);
-  // };
-
-  // const handleCancel = () => {
-  //   setIsModalOpen(false);
-  // };
-
   const handleClick = () => {
     setIsPlay(true);
+
+    getExistCamera()
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("call API ok");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setTimeout(function () {
+      setTimeAppear1(true);
+    }, 2000);
   };
 
   const createViPham2 = () => {
     setTimeout(() => {
       setTimeAppear2(true);
     }, 5000);
-    // SendImgViaTelegram(
-    //   "https://drive.google.com/file/d/1q0Me1WhqO2aWaOUfI111fM50Hl3gKvco/view?usp=sharing"
-    // );
   };
 
   const createViPham3 = () => {
     setTimeout(() => {
       setTimeAppear3(true);
     }, 7000);
-    // SendImgViaTelegram(
-    //   "https://drive.google.com/file/d/1q0Me1WhqO2aWaOUfI111fM50Hl3gKvco/view?usp=sharing"
-    // );
   };
 
   const viPham = [
@@ -83,22 +78,6 @@ export default function CameraScreenExist() {
     time: "17:00:00",
     image: "img/demo_result.jpg",
   };
-
-  useEffect(() => {
-    // setIsPlay(true);
-    getExistCamera()
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("call API ok");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    setTimeout(function () {
-      setTimeAppear1(true);
-    }, 2000);
-  }, [isPlay]);
 
   useEffect(() => {
     if (timeAppear1 && !timeAppear2) {

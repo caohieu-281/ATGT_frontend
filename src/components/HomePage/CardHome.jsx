@@ -7,7 +7,7 @@ const CardHome: React.FC = ({ nameCamera }) => {
         alt="Sunset in the mountains"
       />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{nameCamera}</div>
+        <div className="font-bold text-xl mb-2 text-center">{nameCamera}</div>
       </div>
     </div>
   );

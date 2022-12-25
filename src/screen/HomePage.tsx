@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Row, Breadcrumb, Layout, theme, Modal } from "antd";
+import { Col, Row, Breadcrumb, Layout, theme } from "antd";
 import Map from "../components/Map/Map";
 import { Select } from "antd";
 import type { SelectProps } from "antd";
@@ -83,18 +83,6 @@ const HomePage: React.FC = () => {
                 options={options}
               />
             </div>
-            {/* <div style={{ width: "50%" }}>
-              <label style={{ marginRight: "10px" }}> Phường </label>
-              <Select
-                mode="multiple"
-                allowClear
-                style={{ width: "50%", marginBottom: "16px" }}
-                placeholder="Please select"
-                defaultValue={["Hoan Kiem", "Bach Mai", "Hai Ba Trung"]}
-                onChange={handleChange}
-                options={options}
-              />
-            </div> */}
           </div>
           <div className="text-center font-bold text-xl mb-3">
             Danh sách camera
@@ -108,47 +96,124 @@ const HomePage: React.FC = () => {
                 <Col
                   span={8}
                   className="overflow-auto"
-                  style={{ height: "100%" }}
+                  style={{
+                    boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
+                    height: "100%",
+                  }}
                 >
                   {location.map((diaDiem) => {
                     if (diaDiem === "Hoan Kiem") {
                       return (
-                        <div key={diaDiem}>
-                          <p className="text-center font-bold text-lg">
+                        <div
+                          key={diaDiem}
+                          className="mt-2 mx-3"
+                          style={{
+                            boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
+                          }}
+                        >
+                          <p className="text-center font-bold text-lg pt-2">
                             {diaDiem}
                           </p>
-                          {listCamera.map((camera) => (
-                            <div key={camera.nameCamera}>
-                              <div
-                                onClick={() => {
-                                  navigate("/camera");
-                                }}
-                                className="mx-5 mb-3"
-                              >
-                                <CardHome nameCamera={camera.nameCamera} />
-                              </div>
-                            </div>
-                          ))}
+                          {listCamera.map((camera, idx) => {
+                            if (idx % 2 === 0) {
+                              return (
+                                <>
+                                  <Row
+                                    justify="space-between"
+                                    style={{ height: "100%" }}
+                                  >
+                                    <Col span={12}>
+                                      <div key={camera.nameCamera}>
+                                        <div
+                                          onClick={() => {
+                                            navigate("/camera");
+                                          }}
+                                          className="mx-2 mb-3"
+                                        >
+                                          <CardHome
+                                            nameCamera={camera.nameCamera}
+                                          />
+                                        </div>
+                                      </div>
+                                    </Col>
+                                    <Col span={12}>
+                                      <div key={listCamera[idx + 1].nameCamera}>
+                                        <div
+                                          onClick={() => {
+                                            navigate("/camera");
+                                          }}
+                                          className="mx-2 mb-3"
+                                        >
+                                          <CardHome
+                                            nameCamera={
+                                              listCamera[idx + 1].nameCamera
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </Col>
+                                  </Row>
+                                </>
+                              );
+                            }
+                          })}
                         </div>
                       );
                     } else {
                       return (
-                        <div key={diaDiem}>
-                          <p className="text-center font-bold text-lg">
+                        <div
+                          key={diaDiem}
+                          className="mt-2 mx-3"
+                          style={{
+                            boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
+                          }}
+                        >
+                          <p className="text-center font-bold text-lg pt-2">
                             {diaDiem}
                           </p>
-                          {listCamera.map((camera) => (
-                            <div key={camera.nameCamera}>
-                              <div
-                                onClick={() => {
-                                  navigate("/camera-exist");
-                                }}
-                                className="mx-5 mb-3"
-                              >
-                                <CardHome nameCamera={camera.nameCamera} />
-                              </div>
-                            </div>
-                          ))}
+                          {listCamera.map((camera, idx) => {
+                            if (idx % 2 === 0) {
+                              return (
+                                <>
+                                  <Row
+                                    justify="space-between"
+                                    style={{ height: "100%" }}
+                                  >
+                                    <Col span={12}>
+                                      <div key={camera.nameCamera}>
+                                        <div
+                                          onClick={() => {
+                                            navigate("/camera-exist");
+                                          }}
+                                          className="mx-2 mb-3"
+                                        >
+                                          <CardHome
+                                            nameCamera={camera.nameCamera}
+                                          />
+                                        </div>
+                                      </div>
+                                    </Col>
+                                    <Col span={12}>
+                                      <div key={listCamera[idx + 1].nameCamera}>
+                                        <div
+                                          onClick={() => {
+                                            navigate("/camera-exist");
+                                          }}
+                                          className="mx-2 mb-3"
+                                        >
+                                          <CardHome
+                                            nameCamera={
+                                              listCamera[idx + 1].nameCamera
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                    </Col>
+                                  </Row>
+                                </>
+                              );
+                            }
+                          })}
                         </div>
                       );
                     }

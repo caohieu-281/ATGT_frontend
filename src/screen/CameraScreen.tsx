@@ -8,6 +8,7 @@ import { getNewCamera } from "../services/CameraServices";
 export default function CameraScreen() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
+  const [isVideoOn, setIsVideoOn] = useState(false);
   const [timeAppear1, setTimeAppear1] = useState(false);
   const [timeAppear2, setTimeAppear2] = useState(false);
   const [timeAppear3, setTimeAppear3] = useState(false);
@@ -38,6 +39,7 @@ export default function CameraScreen() {
 
   const handleClick = () => {
     setIsModalOpen(false);
+    setIsVideoOn(true);
     setIsPlay(true);
     getNewCamera()
       .then((res) => {
@@ -51,27 +53,18 @@ export default function CameraScreen() {
     setTimeout(function () {
       setTimeAppear1(true);
     }, 20000);
-    // SendImgViaTelegram(
-    //   "https://drive.google.com/file/d/1DzkmA3_kSWSRzPBhDEKWQkf_k1vpoD11/view?usp=sharing"
-    // );
   };
 
   const createViPham2 = () => {
     setTimeout(() => {
       setTimeAppear2(true);
     }, 5000);
-    // SendImgViaTelegram(
-    //   "https://drive.google.com/file/d/1q0Me1WhqO2aWaOUfI111fM50Hl3gKvco/view?usp=sharing"
-    // );
   };
 
   const createViPham3 = () => {
     setTimeout(() => {
       setTimeAppear3(true);
     }, 5000);
-    // SendImgViaTelegram(
-    //   "https://drive.google.com/file/d/1q0Me1WhqO2aWaOUfI111fM50Hl3gKvco/view?usp=sharing"
-    // );
   };
 
   const viPham1 = {
@@ -92,6 +85,7 @@ export default function CameraScreen() {
       title: "Bạn chưa thêm vùng vi phạm. Hãy thêm!!!",
       icon: <ExclamationCircleOutlined />,
       okText: "Thêm",
+      okButtonProps: { style: { backgroundColor: "blue" } },
       onOk: () => {
         return handleOk();
       },
@@ -136,7 +130,10 @@ export default function CameraScreen() {
         open={isModalOpen}
         onOk={handleClick}
         onCancel={handleCancel}
-        cancelButtonProps={{ disabled: true }}
+        okButtonProps={{
+          style: { backgroundColor: "blue", justifyContent: "center" },
+        }}
+        cancelButtonProps={{ style: { display: "none" } }}
         width={1024}
         bodyStyle={{ height: 600 }}
       >
@@ -148,13 +145,15 @@ export default function CameraScreen() {
       </div>
       <div className="row justify-content-center px-2">
         <div className="col-7 row">
-          <ReactPlayer
-            url="vid1_check-out_convert.mp4"
-            playing={isPlay}
-            loop={true}
-            width="100%"
-            height="80vh"
-          />
+          {isVideoOn && (
+            <ReactPlayer
+              url="vid1_check-out_convert.mp4"
+              playing={isPlay}
+              loop={true}
+              width="100%"
+              height="80vh"
+            />
+          )}
         </div>
         <div
           className="col-5"
