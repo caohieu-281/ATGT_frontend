@@ -22,6 +22,8 @@ for (let i = 0; i < 46; i++) {
 const TableHome: React.FC = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal, contextHolder] = Modal.useModal();
+
   const columns: ColumnsType<DataType> = [
     {
       title: "Địa điểm",
@@ -82,6 +84,7 @@ const TableHome: React.FC = () => {
         // onOk={handleClick}
         onCancel={handleCancel}
         // cancelButtonProps={{ disabled: true }}
+
         width={1024}
         bodyStyle={{ height: 600 }}
       >

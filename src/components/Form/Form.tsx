@@ -8,6 +8,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import "./Form.css";
 import { Field, Formik, Form as FormikForm } from "formik";
 import { LatLng } from "leaflet";
+import { Select } from "antd";
 
 const Form = ({
   isVisible,
@@ -21,10 +22,11 @@ const Form = ({
   addNewPlace: Function;
 }) => {
   const initialValues = {
-    picture: "",
+    picture: "123",
     title: "",
     description: "",
     seeMoreLink: "",
+    linkImage: "",
   };
 
   const validator = (values: PlaceFormProps) => {
@@ -58,7 +60,7 @@ const Form = ({
         >
           <AiFillCloseCircle />
         </span>
-        <span className="form__header__title">Add new Place</span>
+        <span className="form__header__title">Thêm Địa Điểm</span>
       </div>
       <Formik
         initialValues={initialValues}
@@ -69,21 +71,51 @@ const Form = ({
           <FormikForm>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="picture">Picture url</label>
-                <Field id="picture" name="picture" placeholder="" />
+                <label htmlFor="picture">Địa Điểm</label>
+                {/* <Field id="picture" name="picture" placeholder="" /> */}
+                <Select
+                  showSearch
+                  className=""
+                  style={{ width: "100%" }}
+                  placeholder="Search to Select"
+                  defaultValue={"Hoan Kiem"}
+                  optionFilterProp="children"
+                  filterOption={(input, option) =>
+                    (option?.label ?? "").includes(input)
+                  }
+                  filterSort={(optionA, optionB) =>
+                    (optionA?.label ?? "")
+                      .toLowerCase()
+                      .localeCompare((optionB?.label ?? "").toLowerCase())
+                  }
+                  options={[
+                    {
+                      value: "Hoan Kiem",
+                      label: "Hoan Kiem",
+                    },
+                    {
+                      value: "Bach Mai",
+                      label: "Bach Mai",
+                    },
+                    {
+                      value: "Hai Ba Trung",
+                      label: "Hai Ba Trung",
+                    },
+                  ]}
+                />
               </div>
               {errors.picture && <div className="errors">Required</div>}
             </div>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="title">Title</label>
-                <Field id="title" name="title" placeholder="" />
+                <label htmlFor="title">Tên Camera</label>
+                <Field id="title" name="title" placeholder="Tên camera" />
               </div>
               {errors.title && <div className="errors">Required</div>}
             </div>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="description">description</label>
+                <label htmlFor="description">Chi Tiết</label>
                 <Field
                   id="description"
                   name="description"
@@ -94,10 +126,18 @@ const Form = ({
             </div>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="link">seeMoreLink</label>
+                <label htmlFor="link">Link Camera</label>
                 <Field id="link" name="seeMoreLink" placeholder="link" />
               </div>
               {errors.seeMoreLink && <div className="errors">Required</div>}
+            </div>
+
+            <div className="formGroup">
+              <div className="formGroupInput">
+                <label htmlFor="link">Link Ảnh</label>
+                <Field id="link" name="linkImage" placeholder="link" />
+              </div>
+              {errors.linkImage && <div className="errors">Required</div>}
             </div>
 
             <div className="button__container">

@@ -6,6 +6,7 @@ import type { SelectProps } from "antd";
 import TableHome from "../components/HomePage/TableHome";
 import CardHome from "../components/HomePage/CardHome";
 import { useNavigate } from "react-router-dom";
+import Form from "../components/Form/Form";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
@@ -82,7 +83,7 @@ const HomePage: React.FC = () => {
                 options={options}
               />
             </div>
-            <div style={{ width: "50%" }}>
+            {/* <div style={{ width: "50%" }}>
               <label style={{ marginRight: "10px" }}> Phường </label>
               <Select
                 mode="multiple"
@@ -93,7 +94,7 @@ const HomePage: React.FC = () => {
                 onChange={handleChange}
                 options={options}
               />
-            </div>
+            </div> */}
           </div>
           <div className="text-center font-bold text-xl mb-3">
             Danh sách camera
@@ -142,6 +143,7 @@ const HomePage: React.FC = () => {
           <div className="mt-3">
             <TableHome></TableHome>
           </div>
+          <Form />
         </Content>
       </Layout>
     </Layout>

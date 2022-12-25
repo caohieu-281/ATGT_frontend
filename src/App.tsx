@@ -18,9 +18,6 @@ function MapScreen() {
   return (
     <>
       <main>
-        <Search />
-        <Map />
-        <Preview />
         <Form />
       </main>
     </>
