@@ -12,6 +12,7 @@ import Dashboard from "./screen/Dashboard";
 import "antd/dist/reset.css";
 import { Layout } from "antd";
 import Sidebar from "./components/Sidebar/Sidebar";
+import { Footer } from "antd/es/layout/layout";
 
 function MapScreen() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/home" element={<HomePage />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
           </Routes>
+          <Footer style={{ textAlign: "center" }}>ATGT - 2022 Camera</Footer>
         </Layout>
       </Layout>
     </BrowserRouter>

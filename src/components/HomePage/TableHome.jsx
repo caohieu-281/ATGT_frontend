@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Table } from "antd";
+import { Button, Modal, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 interface DataType {
@@ -8,27 +8,6 @@ interface DataType {
   age: number;
   address: string;
 }
-
-const columns: ColumnsType<DataType> = [
-  {
-    title: "Địa điểm",
-    dataIndex: "address",
-  },
-  {
-    title: "Thời gian",
-    dataIndex: "time",
-  },
-  {
-    title: "Camera",
-    dataIndex: "camera",
-  },
-  {
-    title: "Action",
-    dataIndex: "",
-    key: "x",
-    render: () => <a className="text-blue-700">Go to camera</a>,
-  },
-];
 
 const data: DataType[] = [];
 for (let i = 0; i < 46; i++) {
@@ -42,6 +21,39 @@ for (let i = 0; i < 46; i++) {
 
 const TableHome: React.FC = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const columns: ColumnsType<DataType> = [
+    {
+      title: "Địa điểm",
+      dataIndex: "address",
+    },
+    {
+      title: "Thời gian",
+      dataIndex: "time",
+    },
+    {
+      title: "Camera",
+      dataIndex: "camera",
+    },
+    {
+      title: "Action",
+      dataIndex: "",
+      key: "x",
+      render: () => (
+        <a
+          onClick={() => {
+            setIsModalOpen(true);
+          }}
+          className="text-blue-700"
+        >
+          Xem Hình Ảnh
+        </a>
+      ),
+    },
+  ];
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
   const start = () => {
     // ajax request after empty completing
@@ -64,6 +76,17 @@ const TableHome: React.FC = () => {
   return (
     <div className="px-5">
       <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+      <Modal
+        title="Hình ảnh vi phạm"
+        open={isModalOpen}
+        // onOk={handleClick}
+        onCancel={handleCancel}
+        // cancelButtonProps={{ disabled: true }}
+        width={1024}
+        bodyStyle={{ height: 600 }}
+      >
+        <img src="https://static.kinhtedothi.vn/images/upload/2021/12/25/a573cb83-d9a3-4000-870e-d64c3c4a4a7b.jpg" />
+      </Modal>
     </div>
   );
 };
