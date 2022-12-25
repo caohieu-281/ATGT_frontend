@@ -3,15 +3,14 @@ import ReactPlayer from "react-player";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import MultipleCanvas from "../components/DrawPolygon/MultipleCanvas";
 import { Breadcrumb, Modal, notification, theme } from "antd";
+import { visitParameterList } from "typescript";
 // import SendImgViaTelegram from "../bot/SendImgViaTelegram";
 
-export default function CameraScreen() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export default function CameraScreenExist() {
   const [isPlay, setIsPlay] = useState(false);
   const [timeAppear1, setTimeAppear1] = useState(false);
   const [timeAppear2, setTimeAppear2] = useState(false);
   const [timeAppear3, setTimeAppear3] = useState(false);
-  // const [api, contextHolder] = notification.useNotification();
 
   const openNotification = () => {
     notification.warning({
@@ -24,28 +23,21 @@ export default function CameraScreen() {
     });
   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  // const showModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
-  const handleOk = () => {
-    console.log("sdkfskhfasf");
-    setIsModalOpen(true);
-  };
+  // const handleOk = () => {
+  //   console.log("sdkfskhfasf");
+  //   setIsModalOpen(true);
+  // };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  // const handleCancel = () => {
+  //   setIsModalOpen(false);
+  // };
 
   const handleClick = () => {
-    setIsModalOpen(false);
     setIsPlay(true);
-    setTimeout(function () {
-      setTimeAppear1(true);
-    }, 2000);
-    // SendImgViaTelegram(
-    //   "https://drive.google.com/file/d/1DzkmA3_kSWSRzPBhDEKWQkf_k1vpoD11/view?usp=sharing"
-    // );
   };
 
   const createViPham2 = () => {
@@ -66,6 +58,21 @@ export default function CameraScreen() {
     // );
   };
 
+  const viPham = [
+    {
+      time: "8:23:23",
+      image: "img/demo_result.jpg",
+    },
+    {
+      time: "8:23:23",
+      image: "img/demo_result.jpg",
+    },
+    {
+      time: "8:23:23",
+      image: "img/demo_result.jpg",
+    },
+  ];
+
   const viPham1 = {
     time: "16:23:23",
     image: "img/demo_result.jpg",
@@ -79,20 +86,13 @@ export default function CameraScreen() {
     image: "img/demo_result.jpg",
   };
 
-  const confirm = () => {
-    Modal.warning({
-      title: "Bạn chưa thêm vùng vi phạm. Hãy thêm!!!",
-      icon: <ExclamationCircleOutlined />,
-      okText: "Thêm",
-      onOk: () => {
-        return handleOk();
-      },
-    });
-  };
-
   useEffect(() => {
-    confirm();
-  }, []);
+    // setIsPlay(true);
+
+    setTimeout(function () {
+      setTimeAppear1(true);
+    }, 2000);
+  }, [isPlay]);
 
   useEffect(() => {
     if (timeAppear1 && !timeAppear2) {
@@ -105,11 +105,13 @@ export default function CameraScreen() {
       openNotification();
     }
   }, [timeAppear1, timeAppear2, timeAppear3]);
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
-    <div className="w-100 container-fluid mt-3 mb-5">
+    <div className="w-100 container-fluid mt-3 mb-5" onClick={handleClick}>
       <Breadcrumb
         style={{
           padding: "16px",
@@ -123,20 +125,9 @@ export default function CameraScreen() {
         <Breadcrumb.Item>Map</Breadcrumb.Item>
         <Breadcrumb.Item>Camera</Breadcrumb.Item>
       </Breadcrumb>
-      <Modal
-        title="Thêm vùng vi phạm"
-        open={isModalOpen}
-        onOk={handleClick}
-        onCancel={handleCancel}
-        cancelButtonProps={{ disabled: true }}
-        width={1024}
-        bodyStyle={{ height: 600 }}
-      >
-        <MultipleCanvas />
-      </Modal>
 
       <div className="row text-center text-lg mb-3">
-        <h1 className="">Khu vực: Nguyễn Chí Thanh</h1>
+        <h1 className="">Khu vực: Hai Bà Trưng</h1>
       </div>
       <div className="row justify-content-center px-2">
         <div className="col-7 row">
@@ -146,6 +137,7 @@ export default function CameraScreen() {
             loop={true}
             width="100%"
             height="80vh"
+            // controls={true}
           />
         </div>
         <div
@@ -160,6 +152,21 @@ export default function CameraScreen() {
           </h3>
           {/* list */}
           <div className="overflow-auto" style={{ height: "90%" }}>
+            {viPham.map((item) => {
+              return (
+                <div
+                  className="block p-3 m-2 shadow-sm"
+                  style={{ backgroundColor: "aliceblue" }}
+                >
+                  <div className="image">
+                    <img src={item.image} alt="" className="w-100" />
+                  </div>
+                  <div className="time text-center pt-3 fw-bold">
+                    {item.time}
+                  </div>
+                </div>
+              );
+            })}
             {timeAppear1 && (
               <>
                 <div
