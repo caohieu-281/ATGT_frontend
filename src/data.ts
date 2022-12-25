@@ -9,6 +9,7 @@ export const data: Place[] = [
     position: [21.003131, 105.820193],
     seeMoreLink: "http://localhost:3000/camera",
     district: "Hai Ba Trung",
+    isWarning: true,
   },
 
   {
@@ -19,6 +20,7 @@ export const data: Place[] = [
     position: [20.999392363815744, 105.79673884081647],
     seeMoreLink: "",
     district: "Hoan Kiem",
+    isWarning: false,
   },
   {
     title: "Đại học Bách Khoa",
@@ -28,6 +30,7 @@ export const data: Place[] = [
     position: [21.006815260358177, 105.8451832998724],
     seeMoreLink: "",
     district: "Bach Mai",
+    isWarning: true,
   },
   {
     title: "Hoàn Kiếm",
@@ -37,5 +40,6 @@ export const data: Place[] = [
     position: [21.031818752683257, 105.85143719558694],
     seeMoreLink: "",
     district: "Hoan Kiem",
+    isWarning: false,
   },
 ];

@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 
-import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
 import Search from "./components/Search/Search";
 import Preview from "./components/Preview/Preview";
@@ -11,6 +10,8 @@ import CameraScreen from "./screen/CameraScreen";
 import HomePage from "./screen/HomePage";
 import Dashboard from "./screen/Dashboard";
 import "antd/dist/reset.css";
+import { Layout } from "antd";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function MapScreen() {
   return (
@@ -28,12 +29,17 @@ function MapScreen() {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MapScreen />}></Route>
-        <Route path="/camera" element={<CameraScreen />}></Route>
-        <Route path="/home" element={<HomePage />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}></Route>
-      </Routes>
+      <Layout style={{ minHeight: "100vh" }}>
+        <Sidebar></Sidebar>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<MapScreen />}></Route>
+            <Route path="/camera" element={<CameraScreen />}></Route>
+            <Route path="/home" element={<HomePage />}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
+          </Routes>
+        </Layout>
+      </Layout>
     </BrowserRouter>
   );
 }

@@ -1,18 +1,11 @@
 import React, { useState } from "react";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Col, MenuProps, Row, Breadcrumb, Layout, Menu, theme } from "antd";
+import { Col, Row, Breadcrumb, Layout, theme } from "antd";
 import Map from "../components/Map/Map";
 import { Select } from "antd";
 import type { SelectProps } from "antd";
-import Preview from "../components/Preview/Preview";
 import TableHome from "../components/HomePage/TableHome";
 import CardHome from "../components/HomePage/CardHome";
+import { useNavigate } from "react-router-dom";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
@@ -48,42 +41,11 @@ const listCamera = [
   },
 ];
 
-const { Content, Footer, Sider } = Layout;
-
-type MenuItem = Required<MenuProps>["items"][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[]
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
-const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-  getItem("Files", "9", <FileOutlined />),
-];
+const { Content, Footer } = Layout;
 
 const HomePage: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
   const [location, setLocation] = useState(["Hoan Kiem"]);
+  let navigate = useNavigate();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -93,25 +55,6 @@ const HomePage: React.FC = () => {
   };
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-      >
-        <div
-          style={{
-            height: 32,
-            margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
-          }}
-        />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
-      </Sider>
       <Layout>
         <Content style={{ margin: "0 16px", flexDirection: "column" }}>
           <Breadcrumb
@@ -128,7 +71,6 @@ const HomePage: React.FC = () => {
           </Breadcrumb>
           <div style={{ display: "flex", flexDirection: "col", width: "100%" }}>
             <div style={{ width: "50%" }}>
-              {/* <div> */}
               <label style={{ marginRight: "10px" }}> Địa Điểm </label>
               <Select
                 mode="multiple"
@@ -158,22 +100,36 @@ const HomePage: React.FC = () => {
               <Col span={15}>
                 <Map location={location}></Map>
               </Col>
-              <Col
-                span={8}
-                // flex={1}
-                className="overflow-auto"
-                style={{ height: "100%" }}
-              >
-                {listCamera.map((camera) => (
-                  <div className="mx-5 mb-5">
-                    <CardHome
-                      key={camera.nameCamera}
-                      nameCamera={camera.nameCamera}
-                    />
-                  </div>
-                ))}
-                {/* <CardHome /> */}
-              </Col>
+              {location && (
+                <Col
+                  span={8}
+                  // flex={1}
+                  className="overflow-auto"
+                  style={{ height: "100%" }}
+                >
+                  {location.map((diaDiem) => {
+                    return (
+                      <div key={diaDiem}>
+                        <p className="text-center font-bold text-lg">
+                          {diaDiem}
+                        </p>
+                        {listCamera.map((camera) => (
+                          <div key={camera.nameCamera}>
+                            <div
+                              onClick={() => {
+                                navigate("/camera");
+                              }}
+                              className="mx-5 mb-3"
+                            >
+                              <CardHome nameCamera={camera.nameCamera} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })}
+                </Col>
+              )}
             </Row>
           </div>
           <div className="mt-3">

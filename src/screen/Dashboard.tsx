@@ -92,7 +92,7 @@ const Dashboard: React.FC = () => {
             <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ display: "flex", flexDirection: "col", width: "100%" }}>
-            1231312312321
+            hee
           </div>
         </Content>
       </Layout>

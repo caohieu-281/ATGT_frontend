@@ -29,4 +29,5 @@ export interface Place {
   seeMoreLink: string;
   position: LatLngExpression;
   district: string;
+  isWarning: boolean;
 }

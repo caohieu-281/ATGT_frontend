@@ -1,5 +1,5 @@
 import { LatLngExpression } from "leaflet";
-import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
+import { MapContainer, TileLayer, Tooltip, Marker } from "react-leaflet";
 import { connect } from "react-redux";
 import {
   setPlacePreviewVisibility,
@@ -10,6 +10,7 @@ import AddMarker from "./AddMarker";
 import { useMap } from "react-leaflet";
 
 import "./Map.css";
+import redIcon from "./iconMap";
 
 function SetCenter() {
   const map = useMap();
@@ -68,15 +69,27 @@ const Map = ({
                 return false;
               })
             )
-              return (
-                <Marker
-                  key={place.title}
-                  position={place.position}
-                  eventHandlers={{ click: () => showPreview(place) }}
-                >
-                  <Tooltip>{place.title}</Tooltip>
-                </Marker>
-              );
+              if (place.isWarning)
+                return (
+                  <Marker
+                    key={place.title}
+                    position={place.position}
+                    eventHandlers={{ click: () => showPreview(place) }}
+                    icon={redIcon}
+                  >
+                    <Tooltip>{place.title}</Tooltip>
+                  </Marker>
+                );
+              else
+                return (
+                  <Marker
+                    key={place.title}
+                    position={place.position}
+                    eventHandlers={{ click: () => showPreview(place) }}
+                  >
+                    <Tooltip>{place.title}</Tooltip>
+                  </Marker>
+                );
           }
         })}
         <AddMarker />
