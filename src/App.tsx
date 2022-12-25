@@ -32,9 +32,9 @@ function App() {
         <Sidebar></Sidebar>
         <Layout>
           <Routes>
-            <Route path="/" element={<MapScreen />}></Route>
+            <Route path="/" element={<HomePage />}></Route>
             <Route path="/camera" element={<CameraScreen />}></Route>
-            <Route path="/home" element={<HomePage />}></Route>
+            {/* <Route path="/home" element={<HomePage />}></Route> */}
             <Route path="/dashboard" element={<Dashboard />}></Route>
             <Route path="/camera-exist" element={<CameraScreenExist />}></Route>
           </Routes>

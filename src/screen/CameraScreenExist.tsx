@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
-import MultipleCanvas from "../components/DrawPolygon/MultipleCanvas";
-import { Breadcrumb, Modal, notification, theme } from "antd";
-import { visitParameterList } from "typescript";
+import { Breadcrumb, notification, theme } from "antd";
 // import SendImgViaTelegram from "../bot/SendImgViaTelegram";
 import { getExistCamera } from "../services/CameraServices";
 
@@ -15,7 +12,7 @@ export default function CameraScreenExist() {
 
   const openNotification = () => {
     notification.warning({
-      message: "Xuát hiện vi phạm",
+      message: "Xuất hiện vi phạm",
       description: "Phát hiện phương tiện vi phạm. Đã gửi về hệ thống",
       duration: 3,
       style: {

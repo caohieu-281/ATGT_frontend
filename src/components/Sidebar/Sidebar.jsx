@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
-import { Menu, theme } from "antd";
+import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // type MenuItem = Required<MenuProps>["items"][number];
 
@@ -21,17 +21,17 @@ function getItem(
 }
 
 const items = [
-  getItem("Map", "home", <DesktopOutlined />),
-  getItem("Dashboard", "dashboard", <PieChartOutlined />),
+  getItem("Map", "/", <DesktopOutlined />),
+  getItem("Dashboard", "/dashboard", <PieChartOutlined />),
 ];
 
 const Sidebar: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   let navigate = useNavigate();
 
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  // const {
+  //   token: { colorBgContainer },
+  // } = theme.useToken();
 
   return (
     <Sider
@@ -51,7 +51,7 @@ const Sidebar: React.FC = () => {
           //   background: "rgba(255, 255, 255, 0.2)",
         }}
         onClick={() => {
-          navigate("/home");
+          navigate("/");
         }}
       >
         <img
@@ -68,7 +68,7 @@ const Sidebar: React.FC = () => {
         mode="inline"
         items={items}
         onClick={(e) => {
-          navigate(`/${e.key}`);
+          navigate(`${e.key}`);
         }}
       />
     </Sider>
