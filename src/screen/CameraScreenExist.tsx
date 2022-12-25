@@ -5,6 +5,7 @@ import MultipleCanvas from "../components/DrawPolygon/MultipleCanvas";
 import { Breadcrumb, Modal, notification, theme } from "antd";
 import { visitParameterList } from "typescript";
 // import SendImgViaTelegram from "../bot/SendImgViaTelegram";
+import { getExistCamera } from "../services/CameraServices";
 
 export default function CameraScreenExist() {
   const [isPlay, setIsPlay] = useState(false);
@@ -88,7 +89,15 @@ export default function CameraScreenExist() {
 
   useEffect(() => {
     // setIsPlay(true);
-
+    getExistCamera()
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("call API ok");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setTimeout(function () {
       setTimeAppear1(true);
     }, 2000);
