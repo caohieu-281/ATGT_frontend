@@ -14,7 +14,7 @@ import { setPlacePreviewVisibility, setSelectedPlace } from "../store/actions";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
-  { label: "Bach Mai", value: "Bach Mai" },
+  { label: "Cau giay", value: "Cau giay" },
   { label: "Hai Ba Trung", value: "Hai Ba Trung" },
 ];
 
@@ -24,7 +24,7 @@ const HomePage: React.FC = ({ places }) => {
   const [listPosition, setPosition] = useState({});
   const [location, setLocation] = useState([
     "Hoan Kiem",
-    "Bach Mai",
+    "Cau giay",
     "Hai Ba Trung",
   ]);
   let navigate = useNavigate();
@@ -77,7 +77,7 @@ const HomePage: React.FC = ({ places }) => {
                 allowClear
                 style={{ width: "50%", marginBottom: "16px" }}
                 placeholder="Please select"
-                defaultValue={["Hoan Kiem", "Bach Mai", "Hai Ba Trung"]}
+                defaultValue={["Hoan Kiem", "Cau giay", "Hai Ba Trung"]}
                 onChange={handleChange}
                 options={options}
               />

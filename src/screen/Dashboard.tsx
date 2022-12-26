@@ -18,11 +18,11 @@ import GaugeChart from "react-gauge-chart";
 const { Title } = Typography;
 
 // data for total and gauge charts
-const total1 = 150;
-const percent1 = 0.35;
+const total1 = 100;
+const percent1 = 0.23;
 
 const total2 = 500;
-const percent2 = 0.65;
+const percent2 = 0.3;
 
 // data for "Xu phat" bar chart
 const data_xuPhat = [
@@ -126,7 +126,7 @@ const Dashboard: React.FC = () => {
                   <Col span={12} align="middle">
                     <Card>
                       <Title level={4} style={{ padding: "0", margin: "0" }}>
-                      Tổng số vi phạm
+                        Tổng số vi phạm
                       </Title>
                       <Title
                         level={2}
@@ -151,7 +151,9 @@ const Dashboard: React.FC = () => {
               </Col>
               <Col span={12} align="middle">
                 <Card>
-                  <Title level={4}>Số vi phạm đã và chưa xử phạt theo tháng</Title>
+                  <Title level={4}>
+                    Số vi phạm đã và chưa xử phạt theo tháng
+                  </Title>
                   <ResponsiveContainer width="100%" height={300}>
                     <BarChart data={data_xuPhat}>
                       <CartesianGrid strokeDasharray="3 3" />

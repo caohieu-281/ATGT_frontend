@@ -21,6 +21,14 @@ for (let i = 0; i < 46; i++) {
     address: `Hai Ba Trung, Ha Noi`,
   });
 }
+
+data.unshift({
+  key: 101,
+  time: `11:00 26/12/2022`,
+  camera: "Dai Hoc Bach Khoa Ha Noi",
+  address: `Dai Hoc Bach Khoa Ha Noi, Ha Noi`,
+});
+
 data.unshift({
   key: 100,
   time: `11:00 26/12/2022`,
@@ -72,15 +80,15 @@ const TableHome: React.FC = ({ places, setPlaces }) => {
       for (let i = 0; i < 46; i++) {
         listTemp.push(i);
       }
+      places.map((diaDiem) => {
+        if (diaDiem.title === "Ngã tư sở" && diaDiem.isWarning === false)
+          listTemp.push(100);
+      });
       setSelectedRowKeys(listTemp);
     }, 1000);
   }, []);
 
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log(
-      "🚀 ~ file: TableHome.jsx:78 ~ onSelectChange ~ newSelectedRowKeys",
-      newSelectedRowKeys
-    );
     if (newSelectedRowKeys.indexOf(100) !== -1) {
       const placeTemp = places.map((diaDiem) => {
         if (diaDiem.title === "Ngã tư sở") {
@@ -89,12 +97,8 @@ const TableHome: React.FC = ({ places, setPlaces }) => {
           return diaDiem;
         }
       });
-      console.log(
-        "🚀 ~ file: TableHome.jsx:92 ~ placeTemp ~ placeTemp",
-        placeTemp
-      );
+
       setPlaces(placeTemp);
-      console.log("🚀 ~ file: TableHome.jsx:86 ~ placeTemp ~ diaDiem", places);
     }
     setSelectedRowKeys(newSelectedRowKeys);
   };
@@ -127,8 +131,9 @@ const TableHome: React.FC = ({ places, setPlaces }) => {
 };
 
 const mapStateToProps = (state: IState) => {
-  const { places } = state;
+  const { places, map } = state;
   return {
+    center: map.center,
     places: places.places,
   };
 };

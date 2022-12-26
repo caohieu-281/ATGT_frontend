@@ -108,8 +108,8 @@ const Form = ({
                       label: "Hoan Kiem",
                     },
                     {
-                      value: "Bach Mai",
-                      label: "Bach Mai",
+                      value: "Cau giay",
+                      label: "Cau giay",
                     },
                     {
                       value: "Hai Ba Trung",

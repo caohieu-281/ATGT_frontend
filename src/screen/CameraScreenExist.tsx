@@ -53,29 +53,35 @@ export default function CameraScreenExist() {
 
   const viPham = [
     {
-      time: "8:23:23",
+      time:
+        "Thời điểm vi phạm: 08:15 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
       image: "img/1/90.jpg",
     },
     {
-      time: "8:23:23",
+      time:
+        "Thời điểm vi phạm: 09:15 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
       image: "img/1/90.jpg",
     },
     {
-      time: "8:23:23",
+      time:
+        "Thời điểm vi phạm: 09:45 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
       image: "img/1/90.jpg",
     },
   ];
 
   const viPham1 = {
-    time: "16:23:23",
+    time:
+      "Thời điểm vi phạm: 10:27 19/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
     image: "img/1/105.jpg",
   };
   const viPham2 = {
-    time: "16:50:01",
+    time:
+      "Thời điểm vi phạm: 10:28 19/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
     image: "img/1/129.jpg",
   };
   const viPham3 = {
-    time: "17:00:00",
+    time:
+      "Thời điểm vi phạm: 10:35 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
     image: "img/1/220.jpg",
   };
 

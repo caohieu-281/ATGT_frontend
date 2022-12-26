@@ -68,15 +68,18 @@ export default function CameraScreen() {
   };
 
   const viPham1 = {
-    time: "16:23:23",
+    time:
+      "Thời điểm vi phạm: 10:35 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
     image: "img/10_1/0.jpg",
   };
   const viPham2 = {
-    time: "16:50:01",
+    time:
+      "Thời điểm vi phạm: 10:35 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
     image: "img/10_1/1.jpg",
   };
   const viPham3 = {
-    time: "17:00:00",
+    time:
+      "Thời điểm vi phạm: 10:35 27/12/2022\nĐịa điểm: Phố Hàng Bông, Quận Hoàn Kiếm, Hà Nội",
     image: "img/10_1/2.jpg",
   };
 
