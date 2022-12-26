@@ -52,32 +52,32 @@ export default function CameraScreen() {
       });
     setTimeout(function () {
       setTimeAppear1(true);
-    }, 20000);
+    }, 14000);
   };
 
   const createViPham2 = () => {
     setTimeout(() => {
       setTimeAppear2(true);
-    }, 5000);
+    }, 1000);
   };
 
   const createViPham3 = () => {
     setTimeout(() => {
       setTimeAppear3(true);
-    }, 5000);
+    }, 1000);
   };
 
   const viPham1 = {
     time: "16:23:23",
-    image: "img/106.jpg",
+    image: "img/10_1/0.jpg",
   };
   const viPham2 = {
     time: "16:50:01",
-    image: "img/120.jpg",
+    image: "img/10_1/1.jpg",
   };
   const viPham3 = {
     time: "17:00:00",
-    image: "img/144.jpg",
+    image: "img/10_1/2.jpg",
   };
 
   const confirm = () => {
@@ -147,7 +147,7 @@ export default function CameraScreen() {
         <div className="col-7 row">
           {isVideoOn && (
             <ReactPlayer
-              url="vid1_check-out_convert.mp4"
+              url="vid10_1.mp4"
               playing={isPlay}
               loop={true}
               width="100%"

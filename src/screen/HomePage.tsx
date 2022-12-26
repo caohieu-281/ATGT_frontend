@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row, Breadcrumb, Layout, theme } from "antd";
 import Map from "../components/Map/Map";
 import { Select } from "antd";
@@ -18,33 +18,10 @@ const options: SelectProps["options"] = [
   { label: "Hai Ba Trung", value: "Hai Ba Trung" },
 ];
 
-const listCamera = [
-  {
-    nameCamera: "Camera 1",
-    imageUrl:
-      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
-  },
-  {
-    nameCamera: "Camera 2",
-    imageUrl:
-      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
-  },
-  {
-    nameCamera: "Camera 3",
-    imageUrl:
-      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
-  },
-  {
-    nameCamera: "Camera 4",
-    imageUrl:
-      "https://image.thanhnien.vn/w1024/Uploaded/2022/pwivoviu/2016_01_21/2_mtcp.jpg",
-  },
-];
-
 const { Content } = Layout;
 
 const HomePage: React.FC = ({ places }) => {
-  console.log("🚀 ~ file: HomePage.tsx:47 ~ places", places);
+  const [listPosition, setPosition] = useState({});
   const [location, setLocation] = useState([
     "Hoan Kiem",
     "Bach Mai",
@@ -54,6 +31,23 @@ const HomePage: React.FC = ({ places }) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  useEffect(() => {
+    var locationObjTemp = {};
+    location.map((diaDiem) => {
+      // ["hoan kiem", "hai ba trung", ...]
+
+      places.map((item) => {
+        // [{{title: 'Ngã tư sở', description: 'Ngã tư sở Hà Nội', picture:...}, {{title: 'Ngã tư sở', description: 'Ngã tư sở Hà Nội', picture:}]
+        if (item.district === diaDiem) {
+          if (diaDiem in locationObjTemp) {
+            locationObjTemp[diaDiem].push(item);
+          } else locationObjTemp[diaDiem] = [item];
+        }
+      });
+    });
+    setPosition(locationObjTemp);
+  }, [location, places]);
 
   const handleChange = (value: string) => {
     setLocation(value);
@@ -107,20 +101,20 @@ const HomePage: React.FC = ({ places }) => {
                   }}
                 >
                   {location.map((diaDiem) => {
-                    if (diaDiem === "Hoan Kiem") {
-                      return (
-                        <div
-                          key={diaDiem}
-                          className="mt-2 mx-3"
-                          style={{
-                            boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
-                          }}
-                        >
-                          <p className="text-center font-bold text-lg pt-2">
-                            {diaDiem}
-                          </p>
-                          {listCamera.map((camera, idx) => {
-                            if (idx % 2 === 0) {
+                    return (
+                      <div
+                        key={diaDiem}
+                        className="mt-2 mx-3"
+                        style={{
+                          boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
+                        }}
+                      >
+                        <p className="text-center font-bold text-lg pt-2">
+                          {diaDiem}
+                        </p>
+                        {listPosition[diaDiem]?.map((camera, idx) => {
+                          if (idx % 2 === 0)
+                            if (idx + 1 !== listPosition[diaDiem].length) {
                               return (
                                 <>
                                   <Row
@@ -128,30 +122,36 @@ const HomePage: React.FC = ({ places }) => {
                                     style={{ height: "100%" }}
                                   >
                                     <Col span={12}>
-                                      <div key={camera.nameCamera}>
+                                      <div key={camera.title}>
                                         <div
                                           onClick={() => {
-                                            navigate("/camera");
+                                            navigate("/camera-exist");
                                           }}
                                           className="mx-2 mb-3"
                                         >
                                           <CardHome
-                                            nameCamera={camera.nameCamera}
+                                            imageUrl={camera.picture}
+                                            nameCamera={camera.title}
                                           />
                                         </div>
                                       </div>
                                     </Col>
                                     <Col span={12}>
-                                      <div key={listCamera[idx + 1].nameCamera}>
+                                      <div key={places[idx + 1].title}>
                                         <div
                                           onClick={() => {
-                                            navigate("/camera");
+                                            navigate("/camera-exist");
                                           }}
                                           className="mx-2 mb-3"
                                         >
                                           <CardHome
+                                            imageUrl={
+                                              listPosition[diaDiem][idx + 1]
+                                                ?.picture
+                                            }
                                             nameCamera={
-                                              listCamera[idx + 1].nameCamera
+                                              listPosition[diaDiem][idx + 1]
+                                                ?.title
                                             }
                                           />
                                         </div>
@@ -160,94 +160,35 @@ const HomePage: React.FC = ({ places }) => {
                                   </Row>
                                 </>
                               );
+                            } else {
+                              return (
+                                <>
+                                  <Row
+                                    justify="space-between"
+                                    style={{ height: "100%" }}
+                                  >
+                                    <Col span={12}>
+                                      <div key={camera.title}>
+                                        <div
+                                          onClick={() => {
+                                            navigate("/camera-exist");
+                                          }}
+                                          className="mx-2 mb-3"
+                                        >
+                                          <CardHome
+                                            imageUrl={camera.picture}
+                                            nameCamera={camera.title}
+                                          />
+                                        </div>
+                                      </div>
+                                    </Col>
+                                  </Row>
+                                </>
+                              );
                             }
-                          })}
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div
-                          key={diaDiem}
-                          className="mt-2 mx-3"
-                          style={{
-                            boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
-                          }}
-                        >
-                          <p className="text-center font-bold text-lg pt-2">
-                            {diaDiem}
-                          </p>
-                          {places.map((camera, idx) => {
-                            if (idx % 2 === 0)
-                              if (idx + 1 !== places.length) {
-                                return (
-                                  <>
-                                    <Row
-                                      justify="space-between"
-                                      style={{ height: "100%" }}
-                                    >
-                                      <Col span={12}>
-                                        <div key={camera.title}>
-                                          <div
-                                            onClick={() => {
-                                              navigate("/camera-exist");
-                                            }}
-                                            className="mx-2 mb-3"
-                                          >
-                                            <CardHome
-                                              imageUrl={camera.picture}
-                                              nameCamera={camera.title}
-                                            />
-                                          </div>
-                                        </div>
-                                      </Col>
-                                      <Col span={12}>
-                                        <div key={places[idx + 1].title}>
-                                          <div
-                                            onClick={() => {
-                                              navigate("/camera-exist");
-                                            }}
-                                            className="mx-2 mb-3"
-                                          >
-                                            <CardHome
-                                              imageUrl={places[idx + 1].picture}
-                                              nameCamera={places[idx + 1].title}
-                                            />
-                                          </div>
-                                        </div>
-                                      </Col>
-                                    </Row>
-                                  </>
-                                );
-                              } else {
-                                return (
-                                  <>
-                                    <Row
-                                      justify="space-between"
-                                      style={{ height: "100%" }}
-                                    >
-                                      <Col span={12}>
-                                        <div key={camera.title}>
-                                          <div
-                                            onClick={() => {
-                                              navigate("/camera-exist");
-                                            }}
-                                            className="mx-2 mb-3"
-                                          >
-                                            <CardHome
-                                              imageUrl={camera.picture}
-                                              nameCamera={camera.title}
-                                            />
-                                          </div>
-                                        </div>
-                                      </Col>
-                                    </Row>
-                                  </>
-                                );
-                              }
-                          })}
-                        </div>
-                      );
-                    }
+                        })}
+                      </div>
+                    );
                   })}
                 </Col>
               )}

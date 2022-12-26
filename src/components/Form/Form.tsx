@@ -43,7 +43,6 @@ const Form = ({
   };
 
   const handleOnSubmit = (values: PlaceFormProps) => {
-    console.log("🚀 ~ file: Form.tsx:47 ~ handleOnSubmit ~ values", values);
     addNewPlace({
       ...values,
       position: [position.lat, position.lng],
@@ -119,7 +118,6 @@ const Form = ({
                   ]}
                 />
               </div>
-              {errors.picture && <div className="errors">Required</div>}
             </div>
             <div className="formGroup">
               <div className="formGroupInput">

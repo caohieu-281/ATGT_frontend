@@ -7,6 +7,7 @@ export const SET_PLACE_PREVIEW_VISIBILITY = "SET_PLACE_PREVIEW_VISIBILITY";
 export const SET_PLACE_FORM_VISIBILITY = "SET_PLACE_FORM_VISIBILITY";
 export const SET_PRE_PLACE_LOCATION = "SET_PRE_PLACE_LOCATION";
 export const ADD_NEW_PLACE = "ADD_NEW_PLACE";
+export const SET_IS_WARNING = "SET_IS_WARNING";
 
 export const setAllPlaces = (places: Place[]) => ({
   type: SET_ALL_PLACES,
@@ -36,4 +37,9 @@ export const setPrePlaceLocation = (payload: LatLngExpression) => ({
 export const addNewPlace = (payload: Place) => ({
   type: ADD_NEW_PLACE,
   payload,
+});
+
+export const setIsWarning = (place: Place) => ({
+  type: SET_IS_WARNING,
+  payload: place,
 });

@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState, useEffect } from "react";
 import { Stage, Layer, Image, Group, Line, Circle } from "react-konva";
 import Button from "../ButtonConva/Button";
 
-const videoSource = "img/vi_pham.jpg";
+const videoSource = "img/imageFake.png";
 const wrapperStyle = {
   display: "flex",
   justifyContent: "center",

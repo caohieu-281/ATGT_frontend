@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Modal, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { connect } from "react-redux";
+import { setAllPlaces } from "../../store/actions";
+import { IState, Place } from "../../store/models";
 
 interface DataType {
   key: React.Key;
@@ -18,8 +21,14 @@ for (let i = 0; i < 46; i++) {
     address: `Hai Ba Trung, Ha Noi`,
   });
 }
+data.unshift({
+  key: 100,
+  time: `11:00 26/12/2022`,
+  camera: "Nga Tu So",
+  address: `Nga Tu So, Ha Noi`,
+});
 
-const TableHome: React.FC = () => {
+const TableHome: React.FC = ({ places, setPlaces }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, contextHolder] = Modal.useModal();
@@ -56,16 +65,37 @@ const TableHome: React.FC = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  const start = () => {
+  useEffect(() => {
     // ajax request after empty completing
     setTimeout(() => {
-      setSelectedRowKeys([]);
+      var listTemp = [];
+      for (let i = 0; i < 46; i++) {
+        listTemp.push(i);
+      }
+      setSelectedRowKeys(listTemp);
     }, 1000);
-  };
+  }, []);
 
   const onSelectChange = (newSelectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", newSelectedRowKeys);
+    console.log(
+      "🚀 ~ file: TableHome.jsx:78 ~ onSelectChange ~ newSelectedRowKeys",
+      newSelectedRowKeys
+    );
+    if (newSelectedRowKeys.indexOf(100) !== -1) {
+      const placeTemp = places.map((diaDiem) => {
+        if (diaDiem.title === "Ngã tư sở") {
+          return { ...diaDiem, isWarning: false };
+        } else {
+          return diaDiem;
+        }
+      });
+      console.log(
+        "🚀 ~ file: TableHome.jsx:92 ~ placeTemp ~ placeTemp",
+        placeTemp
+      );
+      setPlaces(placeTemp);
+      console.log("🚀 ~ file: TableHome.jsx:86 ~ placeTemp ~ diaDiem", places);
+    }
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -81,10 +111,12 @@ const TableHome: React.FC = () => {
       <Modal
         title="Hình ảnh vi phạm"
         open={isModalOpen}
-        // onOk={handleClick}
-        onCancel={handleCancel}
-        // cancelButtonProps={{ disabled: true }}
-
+        onOk={handleCancel}
+        // onCancel={handleCancel}
+        okButtonProps={{
+          style: { backgroundColor: "blue", justifyContent: "center" },
+        }}
+        cancelButtonProps={{ style: { display: "none" } }}
         width={1024}
         bodyStyle={{ height: 600 }}
       >
@@ -94,4 +126,17 @@ const TableHome: React.FC = () => {
   );
 };
 
-export default TableHome;
+const mapStateToProps = (state: IState) => {
+  const { places } = state;
+  return {
+    places: places.places,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    setPlaces: (payload: Place[]) => dispatch(setAllPlaces(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TableHome);
