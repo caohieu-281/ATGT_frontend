@@ -36,47 +36,47 @@ export default function CameraScreenExist() {
 
     setTimeout(function () {
       setTimeAppear1(true);
-    }, 2000);
+    }, 17000);
   };
 
   const createViPham2 = () => {
     setTimeout(() => {
       setTimeAppear2(true);
-    }, 5000);
+    }, 4000);
   };
 
   const createViPham3 = () => {
     setTimeout(() => {
       setTimeAppear3(true);
-    }, 7000);
+    }, 6000);
   };
 
   const viPham = [
     {
       time: "8:23:23",
-      image: "img/demo_result.jpg",
+      image: "img/1/90.jpg",
     },
     {
       time: "8:23:23",
-      image: "img/demo_result.jpg",
+      image: "img/1/90.jpg",
     },
     {
       time: "8:23:23",
-      image: "img/demo_result.jpg",
+      image: "img/1/90.jpg",
     },
   ];
 
   const viPham1 = {
     time: "16:23:23",
-    image: "img/demo_result.jpg",
+    image: "img/1/105.jpg",
   };
   const viPham2 = {
     time: "16:50:01",
-    image: "img/demo_result.jpg",
+    image: "img/1/129.jpg",
   };
   const viPham3 = {
     time: "17:00:00",
-    image: "img/demo_result.jpg",
+    image: "img/1/220.jpg",
   };
 
   useEffect(() => {
@@ -122,7 +122,6 @@ export default function CameraScreenExist() {
             loop={true}
             width="100%"
             height="80vh"
-            // controls={true}
           />
         </div>
         <div
@@ -135,7 +134,6 @@ export default function CameraScreenExist() {
           <h3 className="text-center pt-3 pb-2">
             Những phương tiện vi phạm giao thông
           </h3>
-          {/* list */}
           <div className="overflow-auto" style={{ height: "90%" }}>
             {viPham.map((item) => {
               return (

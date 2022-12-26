@@ -102,121 +102,122 @@ const HomePage: React.FC = () => {
                   }}
                 >
                   {location.map((diaDiem) => {
-                    if (diaDiem === "Hoan Kiem") {
-                      return (
-                        <div
-                          key={diaDiem}
-                          className="mt-2 mx-3"
-                          style={{
-                            boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
-                          }}
-                        >
-                          <p className="text-center font-bold text-lg pt-2">
-                            {diaDiem}
-                          </p>
-                          {listCamera.map((camera, idx) => {
-                            if (idx % 2 === 0) {
-                              return (
-                                <>
-                                  <Row
-                                    justify="space-between"
-                                    style={{ height: "100%" }}
-                                  >
-                                    <Col span={12}>
-                                      <div key={camera.nameCamera}>
-                                        <div
-                                          onClick={() => {
-                                            navigate("/camera");
-                                          }}
-                                          className="mx-2 mb-3"
-                                        >
-                                          <CardHome
-                                            nameCamera={camera.nameCamera}
-                                          />
-                                        </div>
+                    // if (diaDiem === "Hoan Kiem") {
+                    return (
+                      <div
+                        key={diaDiem}
+                        className="mt-2 mx-3"
+                        style={{
+                          boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
+                        }}
+                      >
+                        <p className="text-center font-bold text-lg pt-2">
+                          {diaDiem}
+                        </p>
+                        {listCamera.map((camera, idx) => {
+                          if (idx % 2 === 0) {
+                            return (
+                              <>
+                                <Row
+                                  justify="space-between"
+                                  style={{ height: "100%" }}
+                                >
+                                  <Col span={12}>
+                                    <div key={camera.nameCamera}>
+                                      <div
+                                        onClick={() => {
+                                          navigate("/camera");
+                                        }}
+                                        className="mx-2 mb-3"
+                                      >
+                                        <CardHome
+                                          nameCamera={camera.nameCamera}
+                                        />
                                       </div>
-                                    </Col>
-                                    <Col span={12}>
-                                      <div key={listCamera[idx + 1].nameCamera}>
-                                        <div
-                                          onClick={() => {
-                                            navigate("/camera");
-                                          }}
-                                          className="mx-2 mb-3"
-                                        >
-                                          <CardHome
-                                            nameCamera={
-                                              listCamera[idx + 1].nameCamera
-                                            }
-                                          />
-                                        </div>
+                                    </div>
+                                  </Col>
+                                  <Col span={12}>
+                                    <div key={listCamera[idx + 1].nameCamera}>
+                                      <div
+                                        onClick={() => {
+                                          navigate("/camera-exist");
+                                        }}
+                                        className="mx-2 mb-3"
+                                      >
+                                        <CardHome
+                                          nameCamera={
+                                            listCamera[idx + 1].nameCamera
+                                          }
+                                        />
                                       </div>
-                                    </Col>
-                                  </Row>
-                                </>
-                              );
-                            }
-                          })}
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div
-                          key={diaDiem}
-                          className="mt-2 mx-3"
-                          style={{
-                            boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
-                          }}
-                        >
-                          <p className="text-center font-bold text-lg pt-2">
-                            {diaDiem}
-                          </p>
-                          {listCamera.map((camera, idx) => {
-                            if (idx % 2 === 0) {
-                              return (
-                                <>
-                                  <Row
-                                    justify="space-between"
-                                    style={{ height: "100%" }}
-                                  >
-                                    <Col span={12}>
-                                      <div key={camera.nameCamera}>
-                                        <div
-                                          onClick={() => {
-                                            navigate("/camera-exist");
-                                          }}
-                                          className="mx-2 mb-3"
-                                        >
-                                          <CardHome
-                                            nameCamera={camera.nameCamera}
-                                          />
-                                        </div>
-                                      </div>
-                                    </Col>
-                                    <Col span={12}>
-                                      <div key={listCamera[idx + 1].nameCamera}>
-                                        <div
-                                          onClick={() => {
-                                            navigate("/camera-exist");
-                                          }}
-                                          className="mx-2 mb-3"
-                                        >
-                                          <CardHome
-                                            nameCamera={
-                                              listCamera[idx + 1].nameCamera
-                                            }
-                                          />
-                                        </div>
-                                      </div>
-                                    </Col>
-                                  </Row>
-                                </>
-                              );
-                            }
-                          })}
-                        </div>
-                      );
-                    }
+                                    </div>
+                                  </Col>
+                                </Row>
+                              </>
+                            );
+                          }
+                        })}
+                      </div>
+                    );
+                    // }
+                    // else {
+                    //   return (
+                    //     <div
+                    //       key={diaDiem}
+                    //       className="mt-2 mx-3"
+                    //       style={{
+                    //         boxShadow: ".5px .5px 5px .4em rgba(0,0,0,.1)",
+                    //       }}
+                    //     >
+                    //       <p className="text-center font-bold text-lg pt-2">
+                    //         {diaDiem}
+                    //       </p>
+                    //       {listCamera.map((camera, idx) => {
+                    //         if (idx % 2 === 0) {
+                    //           return (
+                    //             <>
+                    //               <Row
+                    //                 justify="space-between"
+                    //                 style={{ height: "100%" }}
+                    //               >
+                    //                 <Col span={12}>
+                    //                   <div key={camera.nameCamera}>
+                    //                     <div
+                    //                       onClick={() => {
+                    //                         navigate("/camera-exist");
+                    //                       }}
+                    //                       className="mx-2 mb-3"
+                    //                     >
+                    //                       <CardHome
+                    //                         nameCamera={camera.nameCamera}
+                    //                       />
+                    //                     </div>
+                    //                   </div>
+                    //                 </Col>
+                    //                 <Col span={12}>
+                    //                   <div key={listCamera[idx + 1].nameCamera}>
+                    //                     <div
+                    //                       onClick={() => {
+                    //                         navigate("/camera-exist");
+                    //                       }}
+                    //                       className="mx-2 mb-3"
+                    //                     >
+                    //                       <CardHome
+                    //                         nameCamera={
+                    //                           listCamera[idx + 1].nameCamera
+                    //                         }
+                    //                       />
+                    //                     </div>
+                    //                   </div>
+                    //                 </Col>
+                    //               </Row>
+                    //             </>
+                    //           );
+                    //         }
+                    //       })}
+                    //     </div>
+                    //   );
+                    // }
                   })}
                 </Col>
               )}
