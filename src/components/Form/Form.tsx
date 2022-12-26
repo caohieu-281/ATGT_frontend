@@ -23,11 +23,10 @@ const Form = ({
   addNewPlace: Function;
 }) => {
   const [initialValues, setInitialValues] = useState({
-    picture: "123",
+    picture: "",
     title: "",
-    description: "",
+    description: "123",
     seeMoreLink: "",
-    linkImage: "",
   });
 
   const [location, setLocation] = useState("Hoan Kiem");
@@ -44,6 +43,7 @@ const Form = ({
   };
 
   const handleOnSubmit = (values: PlaceFormProps) => {
+    console.log("🚀 ~ file: Form.tsx:47 ~ handleOnSubmit ~ values", values);
     addNewPlace({
       ...values,
       position: [position.lat, position.lng],
@@ -52,11 +52,10 @@ const Form = ({
     // values
     closeForm();
     setInitialValues({
-      picture: "123",
+      picture: "",
       title: "",
-      description: "",
+      description: "123",
       seeMoreLink: "",
-      linkImage: "",
     });
   };
 
@@ -87,7 +86,7 @@ const Form = ({
           <FormikForm>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="picture">Địa Điểm</label>
+                <label>Khu vực</label>
                 <Select
                   showSearch
                   className=""
@@ -124,12 +123,12 @@ const Form = ({
             </div>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="title">Tên Địa Điểm Camera</label>
+                <label htmlFor="title">Tên Địa Điểm</label>
                 <Field id="title" name="title" placeholder="Tên camera" />
               </div>
               {errors.title && <div className="errors">Required</div>}
             </div>
-            <div className="formGroup">
+            {/* <div className="formGroup">
               <div className="formGroupInput">
                 <label htmlFor="description">Chi Tiết</label>
                 <Field
@@ -139,10 +138,10 @@ const Form = ({
                 />
               </div>
               {errors.description && <div className="errors">Required</div>}
-            </div>
+            </div> */}
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="link">Link Camera</label>
+                <label htmlFor="link">Đường liên Kết Camera (URL)</label>
                 <Field id="link" name="seeMoreLink" placeholder="link" />
               </div>
               {errors.seeMoreLink && <div className="errors">Required</div>}
@@ -150,10 +149,10 @@ const Form = ({
 
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="link">Link Ảnh</label>
-                <Field id="link" name="linkImage" placeholder="link" />
+                <label htmlFor="picture">Đường liên Kết Ảnh (URL)</label>
+                <Field id="picture" name="picture" placeholder="link" />
               </div>
-              {errors.linkImage && <div className="errors">Required</div>}
+              {errors.picture && <div className="errors">Required</div>}
             </div>
 
             <div className="button__container">

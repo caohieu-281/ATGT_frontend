@@ -7,6 +7,10 @@ import TableHome from "../components/HomePage/TableHome";
 import CardHome from "../components/HomePage/CardHome";
 import { useNavigate } from "react-router-dom";
 import Form from "../components/Form/Form";
+import { IState, Place } from "../store/models";
+import { LatLng } from "leaflet";
+import { connect } from "react-redux";
+import { setPlacePreviewVisibility, setSelectedPlace } from "../store/actions";
 
 const options: SelectProps["options"] = [
   { label: "Hoan Kiem", value: "Hoan Kiem" },
@@ -39,7 +43,8 @@ const listCamera = [
 
 const { Content } = Layout;
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = ({ places }) => {
+  console.log("🚀 ~ file: HomePage.tsx:47 ~ places", places);
   const [location, setLocation] = useState([
     "Hoan Kiem",
     "Bach Mai",
@@ -171,48 +176,74 @@ const HomePage: React.FC = () => {
                           <p className="text-center font-bold text-lg pt-2">
                             {diaDiem}
                           </p>
-                          {listCamera.map((camera, idx) => {
-                            if (idx % 2 === 0) {
-                              return (
-                                <>
-                                  <Row
-                                    justify="space-between"
-                                    style={{ height: "100%" }}
-                                  >
-                                    <Col span={12}>
-                                      <div key={camera.nameCamera}>
-                                        <div
-                                          onClick={() => {
-                                            navigate("/camera-exist");
-                                          }}
-                                          className="mx-2 mb-3"
-                                        >
-                                          <CardHome
-                                            nameCamera={camera.nameCamera}
-                                          />
+                          {places.map((camera, idx) => {
+                            if (idx % 2 === 0)
+                              if (idx + 1 !== places.length) {
+                                return (
+                                  <>
+                                    <Row
+                                      justify="space-between"
+                                      style={{ height: "100%" }}
+                                    >
+                                      <Col span={12}>
+                                        <div key={camera.title}>
+                                          <div
+                                            onClick={() => {
+                                              navigate("/camera-exist");
+                                            }}
+                                            className="mx-2 mb-3"
+                                          >
+                                            <CardHome
+                                              imageUrl={camera.picture}
+                                              nameCamera={camera.title}
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                    </Col>
-                                    <Col span={12}>
-                                      <div key={listCamera[idx + 1].nameCamera}>
-                                        <div
-                                          onClick={() => {
-                                            navigate("/camera-exist");
-                                          }}
-                                          className="mx-2 mb-3"
-                                        >
-                                          <CardHome
-                                            nameCamera={
-                                              listCamera[idx + 1].nameCamera
-                                            }
-                                          />
+                                      </Col>
+                                      <Col span={12}>
+                                        <div key={places[idx + 1].title}>
+                                          <div
+                                            onClick={() => {
+                                              navigate("/camera-exist");
+                                            }}
+                                            className="mx-2 mb-3"
+                                          >
+                                            <CardHome
+                                              imageUrl={places[idx + 1].picture}
+                                              nameCamera={places[idx + 1].title}
+                                            />
+                                          </div>
                                         </div>
-                                      </div>
-                                    </Col>
-                                  </Row>
-                                </>
-                              );
-                            }
+                                      </Col>
+                                    </Row>
+                                  </>
+                                );
+                              } else {
+                                return (
+                                  <>
+                                    <Row
+                                      justify="space-between"
+                                      style={{ height: "100%" }}
+                                    >
+                                      <Col span={12}>
+                                        <div key={camera.title}>
+                                          <div
+                                            onClick={() => {
+                                              navigate("/camera-exist");
+                                            }}
+                                            className="mx-2 mb-3"
+                                          >
+                                            <CardHome
+                                              imageUrl={camera.picture}
+                                              nameCamera={camera.title}
+                                            />
+                                          </div>
+                                        </div>
+                                      </Col>
+                                    </Row>
+                                  </>
+                                );
+                              }
                           })}
                         </div>
                       );
@@ -235,5 +266,19 @@ const HomePage: React.FC = () => {
     </Layout>
   );
 };
+const mapStateToProps = (state: IState) => {
+  const { places } = state;
+  return {
+    places: places.places,
+  };
+};
 
-export default HomePage;
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    togglePreview: (payload: boolean) =>
+      dispatch(setPlacePreviewVisibility(payload)),
+    setPlaceForPreview: (payload: Place) => dispatch(setSelectedPlace(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
