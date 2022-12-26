@@ -171,7 +171,7 @@ const HomePage: React.FC = ({ places }) => {
                                       <div key={camera.title}>
                                         <div
                                           onClick={() => {
-                                            navigate("/camera-exist");
+                                            navigate("/camera");
                                           }}
                                           className="mx-2 mb-3"
                                         >
