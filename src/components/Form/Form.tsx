@@ -9,6 +9,7 @@ import "./Form.css";
 import { Field, Formik, Form as FormikForm } from "formik";
 import { LatLng } from "leaflet";
 import { Select } from "antd";
+import { useState } from "react";
 
 const Form = ({
   isVisible,
@@ -21,13 +22,15 @@ const Form = ({
   closeForm: Function;
   addNewPlace: Function;
 }) => {
-  const initialValues = {
+  const [initialValues, setInitialValues] = useState({
     picture: "123",
     title: "",
     description: "",
     seeMoreLink: "",
     linkImage: "",
-  };
+  });
+
+  const [location, setLocation] = useState("Hoan Kiem");
 
   const validator = (values: PlaceFormProps) => {
     const keys = Object.keys(values);
@@ -44,10 +47,21 @@ const Form = ({
     addNewPlace({
       ...values,
       position: [position.lat, position.lng],
+      district: location,
     });
     // values
-    console.log("🚀 ~ file: Form.tsx:51 ~ handleOnSubmit ~ values", values);
     closeForm();
+    setInitialValues({
+      picture: "123",
+      title: "",
+      description: "",
+      seeMoreLink: "",
+      linkImage: "",
+    });
+  };
+
+  const handleChange = (value: string) => {
+    setLocation(value);
   };
 
   return (
@@ -74,7 +88,6 @@ const Form = ({
             <div className="formGroup">
               <div className="formGroupInput">
                 <label htmlFor="picture">Địa Điểm</label>
-                {/* <Field id="picture" name="picture" placeholder="" /> */}
                 <Select
                   showSearch
                   className=""
@@ -82,6 +95,7 @@ const Form = ({
                   placeholder="Search to Select"
                   defaultValue={"Hoan Kiem"}
                   optionFilterProp="children"
+                  onChange={handleChange}
                   filterOption={(input, option) =>
                     (option?.label ?? "").includes(input)
                   }
@@ -110,7 +124,7 @@ const Form = ({
             </div>
             <div className="formGroup">
               <div className="formGroupInput">
-                <label htmlFor="title">Tên Camera</label>
+                <label htmlFor="title">Tên Địa Điểm Camera</label>
                 <Field id="title" name="title" placeholder="Tên camera" />
               </div>
               {errors.title && <div className="errors">Required</div>}
