@@ -8,7 +8,7 @@ export const data: Place[] = [
       "https://nhipsonghanoi.hanoimoi.com.vn/Uploads/images/tuandiep/2020/01/17/chuong-duong.jpg",
     position: [21.035449982219923, 105.85500767240661],
     seeMoreLink: "http://localhost:3000/camera",
-    district: "Hoan Kiem",
+    district: "Hoàn Kiếm",
     isWarning: false,
   },
   {
@@ -18,7 +18,7 @@ export const data: Place[] = [
       "https://upload.wikimedia.org/wikipedia/commons/f/ff/PhoHangBong-09122008451.jpg",
     position: [21.029846269409283, 105.8463112510562],
     seeMoreLink: "",
-    district: "Hoan Kiem",
+    district: "Hoàn Kiếm",
     isWarning: true,
   },
   {

@@ -29,7 +29,7 @@ const Form = ({
     seeMoreLink: "",
   });
 
-  const [location, setLocation] = useState("Hoan Kiem");
+  const [location, setLocation] = useState("Hoàn Kiếm");
 
   const validator = (values: PlaceFormProps) => {
     const keys = Object.keys(values);
@@ -91,7 +91,7 @@ const Form = ({
                   className=""
                   style={{ width: "100%" }}
                   placeholder="Search to Select"
-                  defaultValue={"Hoan Kiem"}
+                  defaultValue={"Hoàn Kiếm"}
                   optionFilterProp="children"
                   onChange={handleChange}
                   filterOption={(input, option) =>
@@ -104,8 +104,8 @@ const Form = ({
                   }
                   options={[
                     {
-                      value: "Hoan Kiem",
-                      label: "Hoan Kiem",
+                      value: "Hoàn Kiếm",
+                      label: "Hoàn Kiếm",
                     },
                     {
                       value: "Cau giay",

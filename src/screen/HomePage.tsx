@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import { setPlacePreviewVisibility, setSelectedPlace } from "../store/actions";
 
 const options: SelectProps["options"] = [
-  { label: "Hoan Kiem", value: "Hoan Kiem" },
+  { label: "Hoàn Kiếm", value: "Hoàn Kiếm" },
   { label: "Cau giay", value: "Cau giay" },
   { label: "Hai Ba Trung", value: "Hai Ba Trung" },
 ];
@@ -23,7 +23,7 @@ const { Content } = Layout;
 const HomePage: React.FC = ({ places }) => {
   const [listPosition, setPosition] = useState({});
   const [location, setLocation] = useState([
-    "Hoan Kiem",
+    "Hoàn Kiếm",
     "Cau giay",
     "Hai Ba Trung",
   ]);
@@ -35,7 +35,7 @@ const HomePage: React.FC = ({ places }) => {
   useEffect(() => {
     var locationObjTemp = {};
     location.map((diaDiem) => {
-      // ["hoan kiem", "hai ba trung", ...]
+      // ["Hoàn Kiếm", "hai ba trung", ...]
 
       places.map((item) => {
         // [{{title: 'Ngã tư sở', description: 'Ngã tư sở Hà Nội', picture:...}, {{title: 'Ngã tư sở', description: 'Ngã tư sở Hà Nội', picture:}]
@@ -77,7 +77,7 @@ const HomePage: React.FC = ({ places }) => {
                 allowClear
                 style={{ width: "50%", marginBottom: "16px" }}
                 placeholder="Please select"
-                defaultValue={["Hoan Kiem", "Cau giay", "Hai Ba Trung"]}
+                defaultValue={["Hoàn Kiếm", "Cau giay", "Hai Ba Trung"]}
                 onChange={handleChange}
                 options={options}
               />

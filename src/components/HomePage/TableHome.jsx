@@ -32,8 +32,8 @@ data.unshift({
 data.unshift({
   key: 100,
   time: `11:00 26/12/2022`,
-  camera: "Nga Tu So",
-  address: `Nga Tu So, Ha Noi`,
+  camera: "Duong Lang",
+  address: `Duong Lang, Ha Noi`,
 });
 
 const TableHome: React.FC = ({ places, setPlaces }) => {
@@ -124,7 +124,7 @@ const TableHome: React.FC = ({ places, setPlaces }) => {
         width={1024}
         bodyStyle={{ height: 600 }}
       >
-        <img src="https://static.kinhtedothi.vn/images/upload/2021/12/25/a573cb83-d9a3-4000-870e-d64c3c4a4a7b.jpg" />
+        <img src="/img/11_2/0.jpg" />
       </Modal>
     </div>
   );
